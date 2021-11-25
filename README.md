@@ -8,4 +8,4 @@
 * CSS
 * В проекте не используются сторонние расширения кроме шрифтов и normalize
 
-Ссылка pages https://shiker2032.github.io/russian-travel/
+Ссылка pages https://shiker2032.github.io/mesto-project/
