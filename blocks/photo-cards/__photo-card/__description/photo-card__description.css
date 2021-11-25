@@ -1,0 +1,6 @@
+.photo-card__description {
+  width: 246px;    
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}

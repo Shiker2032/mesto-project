@@ -1,0 +1,16 @@
+.info__title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+}
+
+@media (max-width: 767px) {
+  .info__title {
+      font-weight: 500;
+      font-size: 27px;
+      line-height: 33px;
+      text-align: center;
+      margin-top: 26px;
+  }
+}

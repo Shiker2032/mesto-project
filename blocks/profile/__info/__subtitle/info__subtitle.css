@@ -1,0 +1,13 @@
+.info__subtitle {
+  margin: 10px auto 0;  
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@media (max-width: 767px) {
+  .info__subtitle {
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+  }
+}

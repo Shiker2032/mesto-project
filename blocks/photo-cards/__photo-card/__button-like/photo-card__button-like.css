@@ -1,0 +1,7 @@
+.photo-card__like-button {
+  max-width: 22px;    
+}
+
+.photo-card__like-button_active {
+  content: url(../../../../images/like-active.svg);
+}

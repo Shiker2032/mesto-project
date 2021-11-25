@@ -1,0 +1,9 @@
+.info__wrapper-info {
+  margin-left: 30px;
+}
+
+@media (max-width: 767px) {
+  .info__wrapper-info {
+      margin-left: 0;
+  }
+}

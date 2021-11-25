@@ -1,0 +1,12 @@
+.profile__info{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 120px 336px 24px;
+}
+
+@media (max-width: 767px) {
+  .profile__info {
+      display: flex;
+      flex-flow: column;
+  }
+}

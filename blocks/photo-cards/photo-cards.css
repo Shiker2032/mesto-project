@@ -1,0 +1,16 @@
+.photo-cards {
+  max-width: 880px;
+  width: 100%;
+  margin: 50px auto 0;
+  display: grid;
+  column-gap: 17px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 767px) {
+  .photo-cards {
+      max-width: 282px;
+      grid-template-columns: repeat(auto-fit, 282px);
+  }
+}

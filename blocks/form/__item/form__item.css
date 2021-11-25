@@ -1,0 +1,9 @@
+.form__item {
+  border: 0;
+  border-bottom: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.form__item:last-child {
+  margin: 0;
+}
