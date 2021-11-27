@@ -8,5 +8,7 @@
 @media (max-width: 767px) {
   .footer__copyright {
     margin: 0 auto 0;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
