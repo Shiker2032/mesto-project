@@ -5,6 +5,7 @@
   background-color: transparent;
   border: none;
   background-size: cover;  
+  transition: 0.3s linear;
 }
 
 .button:hover {
