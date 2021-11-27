@@ -1,11 +1,11 @@
-.info__title-wrapper {
+.profile__title-wrapper {
   display: flex;
   min-width: max-content;
   align-items: end;
 }
 
 @media (max-width: 767px) {
-  .info__title-wrapper {
+  .profile__title-wrapper {
       min-width: 282px;
       justify-content: center;
   }
