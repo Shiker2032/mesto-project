@@ -11,3 +11,10 @@
   color: black;
   max-width: 430px;
 }
+
+.form::before {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  background: #000000;
+}
