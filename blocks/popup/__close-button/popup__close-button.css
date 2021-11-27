@@ -4,11 +4,6 @@
   top: -35px;
   right: -35px;
   width: 32px;
-  height: auto;
+  height: 32px;
   background-image: url(../../../images/close\ icon.png);
-}
-
-.popup__close-button:hover {
-  cursor: pointer;
-  opacity: 80%;
 }
