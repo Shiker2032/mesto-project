@@ -3,6 +3,7 @@
   height: 24px;
   transition: 0.3s linear;
   margin-left: 18px;   
+  background-image: url(../../../images/Edit_Button.svg);
 }
 
 .profile__edit-button:hover {
