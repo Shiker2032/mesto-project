@@ -30,7 +30,7 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/form/__form.css);
-@import url(../blocks/form/__state/form__state_hidden.css);
+@import url(../blocks/form/__state/form__state_visible.css);
 @import url(../blocks/form/__close-button/form__close-button.css);
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__input/form__input.css);
