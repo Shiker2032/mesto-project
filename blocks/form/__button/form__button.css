@@ -1,14 +1,12 @@
 .form__button {
   width: 358px;
   height: 50px;
-  border-style: none;
   border-radius: 2px;
   font-size: 18px;
   line-height: 22px;
   color: white;
   background-color: black;
   margin-bottom: 29px;
-  transition: 0.3s linear;
 }
 
 .form__button:hover {
