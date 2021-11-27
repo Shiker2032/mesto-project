@@ -1,14 +1,6 @@
 .form {
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);  
+  display: inline;
   width: 430px;
   border-radius: 10px;
-  background-color: white;
-  color: black;
-  max-width: 430px;
   margin-top: 54px;
 }
