@@ -1,5 +1,5 @@
 .form {
-  display: none;
+  display: flex;
   justify-content: center;
   position: fixed;
   top: 50%;
@@ -11,11 +11,4 @@
   color: black;
   max-width: 430px;
   margin-top: 54px;
-}
-
-.form::before {
-  position: relative;
-  width: 1280px;
-  height: 720px;
-  background: #000000;
 }

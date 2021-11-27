@@ -1,4 +1,5 @@
 .popup {
+  display: inherit;
   width: 430px;
   height: 330px;
   background: #FFFFFF;

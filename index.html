@@ -6,27 +6,35 @@
 	<title>Mesto</title>
 	<link href="./pages/index.css" rel="stylesheet">
 </head>
+<style>
+	
+</style>
 <body class="body">
 <div class="page">
 	<header class="header">
 		<img alt="Лого" class="header__logo" src="./images/logo.svg">
 		<div class="header__line"></div>
 	</header>
-	<div class="content">
-		<div class="popup">
-			<h3 class="popup__heading">Редактировать профиль</h3>
-			<button alt="Закрыть" class="button popup__close-button"></button>
-		<form class="form form__state_visible">
-			<div class="form__container">
-				<fieldset class="form__input">
-					<input class="form__item" id="user-name-input" name="user-name" value="Жак-Ив Кусто" required type="text">
-					<input class="form__item" id="user-activity-input" name="user-activity" value="Иссдеователь океана" required type="text">
-				</fieldset>
-				<fieldset class="form__handlers">
-					<button class="button form__button">Сохранить</button>
-				</fieldset>
-			</div>		
-		</form>
+	<main class="content">
+
+		<div class="popup__overlay .popup__state_visible">
+			<div class="popup">
+				<h3 class="popup__heading">Редактировать профиль</h3>
+				<button alt="Закрыть" class="button popup__close-button"></button>
+			<form class="form ">
+				<div class="form__container">
+					<fieldset class="form__input">
+						<input class="form__item" id="user-name-input" name="user-name" value="Жак-Ив Кусто" required type="text">
+						<input class="form__item" id="user-activity-input" name="user-activity" value="Иссдеователь океана" required type="text">
+					</fieldset>
+					<fieldset class="form__handlers">
+						<button class="button form__button">Сохранить</button>
+					</fieldset>
+				</div>		
+			</form>
+
+		</div>
+		
 	</div>		
 		<section class="profile">
 			<div class="profile__info">
@@ -86,7 +94,7 @@
 				</div>
 			</div>
 		</section>
-	</div>
+	</main>
 	<footer class="footer">
 		<p class="footer__copyright">&#169; 2021 Mesto Russia</p>
 	</footer>
