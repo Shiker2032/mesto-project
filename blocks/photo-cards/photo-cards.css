@@ -4,14 +4,15 @@
   margin: 50px auto 0;
   display: grid;
   column-gap: 17px;
-  grid-row-gap: 20px;
+  grid-row-gap: 24px;
   grid-template-columns: repeat(3, 1fr);
 }
 
 @media (max-width: 767px) {
   .photo-cards {
       max-width: 282px;
-      margin: 36px auto 0;
+      margin: 28px auto 0;
       grid-template-columns: repeat(auto-fit, 282px);
+      grid-row-gap: 19px;
   }
 }
