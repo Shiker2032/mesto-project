@@ -7,7 +7,7 @@
   line-height: 22px;
   color: white;
   background-color: black;
-  margin: 56px auto auto;
+  margin: 65px auto auto;
 }
 
 @media (max-width: 767px) {
@@ -16,6 +16,7 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
+    margin: 55px auto auto;
     
   }
 }
