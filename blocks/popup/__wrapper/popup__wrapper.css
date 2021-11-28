@@ -1,0 +1,20 @@
+.popup-wrapper {
+  max-width: 430px;
+  width: 100%;
+  min-height: 330px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: fixed;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
+@media (max-width: 1000px) {
+  .popup-wrapper {
+    max-width: 282px;
+    top: 47%;
+  }
+}
