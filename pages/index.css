@@ -20,12 +20,12 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
 @import url(../blocks/photo-cards/photo-cards.css);
-@import url(../blocks/__photo-card/photo-card.css);
-@import url(../blocks/__photo-card/__image/photo-card__image.css);
-@import url(../blocks/__photo-card/__description/photo-card__description.css);
-@import url(../blocks/__photo-card/__title/photo-card__title.css);
-@import url(../blocks/__photo-card/__like-button/photo-card__like-button.css);
-@import url(../blocks/__photo-card/__like-button/_state/like-button_state_liked.css);
+@import url(../blocks/photo-card/photo-card.css);
+@import url(../blocks/photo-card/__image/photo-card__image.css);
+@import url(../blocks/photo-card/__description/photo-card__description.css);
+@import url(../blocks/photo-card/__title/photo-card__title.css);
+@import url(../blocks/photo-card/__like-button/photo-card__like-button.css);
+@import url(../blocks/photo-card/__like-button/_state/like-button_state_liked.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
