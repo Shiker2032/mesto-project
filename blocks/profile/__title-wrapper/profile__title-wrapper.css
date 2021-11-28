@@ -6,7 +6,7 @@
 
 @media (max-width: 767px) {
   .profile__title-wrapper {
-      min-width: 282px;
+      min-width: 280px;
       justify-content: center;
   }
 }

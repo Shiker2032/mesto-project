@@ -12,6 +12,7 @@
 @media (max-width: 767px) {
   .profile {
       max-width: 282px;
-      flex-flow: column;        
+      flex-flow: column;
+      margin: 30px auto 0;        
   }
 }
