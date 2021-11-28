@@ -38,9 +38,6 @@
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__state/form__state_visible.css);
-@import url(../blocks/form/__close-button/form__close-button.css);
-@import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__item/form__item.css);
 @import url(../blocks/form/__handlers/form__handlers.css);
