@@ -7,3 +7,12 @@
   height: 32px;
   background-image: url(../../../images/close\ icon.png);
 }
+
+@media (max-width:767px) {
+  .popup__close-button {
+    top: -39px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -7,13 +7,15 @@
   line-height: 22px;
   color: white;
   background-color: black;
-  margin: 56px auto 0;
+  margin: 56px auto auto;
 }
 
 @media (max-width: 767px) {
   .form__button {
     width: 238px;
+    height: 46px;
     font-size: 14px;
     line-height: 17px;
+    
   }
 }

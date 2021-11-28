@@ -15,5 +15,6 @@
 @media (max-width: 767px) {
   .popup {
     width: 282px;
+    top: 47%;
   }
 }
