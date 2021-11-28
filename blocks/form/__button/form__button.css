@@ -7,10 +7,13 @@
   line-height: 22px;
   color: white;
   background-color: black;
-  margin-bottom: 29px;
+  margin: 56px auto 0;
 }
 
-.form__button:hover {
-  cursor: pointer;
-  opacity: 0.8;  
+@media (max-width: 767px) {
+  .form__button {
+    width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

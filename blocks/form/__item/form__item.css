@@ -11,3 +11,12 @@
 .form__item:last-child {
   margin: 0 auto 0;
 }
+
+@media (max-width: 767px) {
+  .form__item {
+    max-width: 238px;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0 auto 30px;
+  }
+}

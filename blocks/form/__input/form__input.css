@@ -4,3 +4,10 @@
   margin :54px auto 0;
   width: 350px;  
 }
+
+@media (max-width: 767px) {
+  .form__input {  
+    width: 238px;
+    margin: 75px auto 0;   
+  }
+}
