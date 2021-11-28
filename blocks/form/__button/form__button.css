@@ -10,7 +10,7 @@
   margin: 65px auto auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .form__button {
     width: 238px;
     height: 46px;

@@ -5,11 +5,10 @@
   margin: 40px auto 0;
   color: white;
   display: flex;
-  align-items: center;
-  
+  align-items: center;  
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .profile {
       max-width: 282px;
       flex-flow: column;

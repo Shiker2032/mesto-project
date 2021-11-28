@@ -5,7 +5,7 @@
   width: 350px;  
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .form__input {  
     width: 238px;
   }

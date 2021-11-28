@@ -7,7 +7,7 @@
   align-self: center;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1000px) {
   .profile__edit-button {
     width: 18px;
     height: 18px;

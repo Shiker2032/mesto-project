@@ -4,7 +4,7 @@
   border-bottom:  1px solid rgba(84,84,84,.7);  
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .header {
       max-width: 320px;
       margin-top: 28px;

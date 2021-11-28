@@ -3,7 +3,7 @@
   max-width: 142px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1000px) {
   .header__logo {
       max-width: 103px;
       margin-left: 23px;

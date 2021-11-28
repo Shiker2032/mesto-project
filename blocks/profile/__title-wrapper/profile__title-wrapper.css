@@ -4,7 +4,7 @@
   align-items: end;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .profile__title-wrapper {
       min-width: 280px;
       justify-content: center;

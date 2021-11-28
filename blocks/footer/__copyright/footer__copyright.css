@@ -5,7 +5,7 @@
   color: #545454;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .footer__copyright {
     margin: 0 auto 0;
     font-size: 14px;

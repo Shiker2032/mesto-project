@@ -12,7 +12,7 @@
   color: black;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .popup {
     width: 282px;
     top: 47%;

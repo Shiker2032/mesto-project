@@ -4,7 +4,7 @@
   grid-template-columns: 120px 336px 24px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .profile__info {
       display: flex;
       flex-flow: column;

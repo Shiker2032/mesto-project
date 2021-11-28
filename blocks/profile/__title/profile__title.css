@@ -10,12 +10,12 @@
   overflow: hidden;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .profile__title {
       font-size: 27px;
       line-height: 33px;
-      text-align: end;
       margin-top: 26px;
       max-width: 210px;
+      text-align: end;
   }
 }

@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .form__handlers {
     max-width: 238px;
   }
