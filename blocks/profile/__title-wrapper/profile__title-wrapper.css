@@ -8,5 +8,6 @@
   .profile__title-wrapper {
       min-width: 280px;
       justify-content: center;
+      justify-content: end;
   }
 }
