@@ -8,6 +8,7 @@
   background-size: 10px 10px;
   background-repeat: no-repeat;
   border: 1px solid white;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1000px) {
