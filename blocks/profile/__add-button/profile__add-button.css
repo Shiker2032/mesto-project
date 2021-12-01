@@ -13,6 +13,8 @@
   .profile__add-button {
       justify-content: center;
       min-width: 282px;
-      margin-top: 36px;
+      min-height: 50px;
+      margin-top: 30px;
+      background-size: 16px 16px;
   }
 }

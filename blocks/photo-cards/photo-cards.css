@@ -11,7 +11,7 @@
 @media (max-width: 1000px) {
   .photo-cards {
       max-width: 282px;
-      margin: 28px auto 0;
+      margin: 35px auto 0;
       grid-template-columns: repeat(auto-fit, 282px);
       grid-row-gap: 19px;
   }
