@@ -96,3 +96,20 @@ let cardCloseButton = document.querySelector("[id='card-form-close']");
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 
+let cardForm = document.querySelector("[name='card-edit-form']");
+cardForm.addEventListener("submit", function() {
+  event.preventDefault();
+  let cardName = cardForm.querySelector("[id='card-name-input']")
+  let cardUrl = cardForm.querySelector("[id='card-url-input']")
+  togglePopup(popupCard);
+  let photoCards =  document.querySelector(".photo-cards");
+  photoCards.insertAdjacentHTML("afterbegin", `
+  <div class="photo-card">
+  <img alt="${cardName.value}" class="photo-card__image" src=${cardUrl.value}>
+  <div class="photo-card__description">
+    <h3 class="photo-card__title">${cardName.value}</h3>
+    <button class="button photo-card__like-button" type="button"></button>
+  </div>
+</div>`)
+});
+
