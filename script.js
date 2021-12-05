@@ -2,7 +2,8 @@ let profile = document.querySelector(".profile");
 let popup = document.querySelector(".popup");
 let form = popup.querySelector(".form");
 let editbutton = document.querySelector(".profile__edit-button");
-let popupCloseButton = document.querySelector(".popup__close-button");
+let profileCloseButton = document.querySelector("[id='profile-form-close']");
+
 
 
 
@@ -77,9 +78,8 @@ function submitForm(event) {
 
 editbutton.addEventListener ("click", () => togglePopup(popup));
 editbutton.addEventListener ("click", renderForm);
-popupCloseButton.addEventListener ("click", () => togglePopup(popup));
+profileCloseButton.addEventListener ("click", () => togglePopup(popup));
 form.addEventListener("submit", submitForm);
-
 
 
 // 'beforebegin' — вставка до открывающего тега;
@@ -87,3 +87,12 @@ form.addEventListener("submit", submitForm);
 // 'afterend' — вставка после закрывающего тега.
 
 initial();
+
+
+let addButton = document.querySelector(".profile__add-button");
+let popupCard = document.querySelector("[id='popup-card']");
+let cardCloseButton = document.querySelector("[id='card-form-close']");
+
+addButton.addEventListener("click", () => togglePopup(popupCard));
+cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
+
