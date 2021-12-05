@@ -4,6 +4,51 @@ let form = popup.querySelector(".form");
 let editbutton = document.querySelector(".profile__edit-button");
 let popupCloseButton = document.querySelector(".popup__close-button");
 
+
+
+function initial() {
+  const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+
+  for(i = 0; i < initialCards.length; i++){
+    let photoCards =  document.querySelector(".photo-cards");
+    photoCards.insertAdjacentHTML("afterbegin", 
+    `<div class="photo-card">
+    <img alt="${initialCards[i].name}" class="photo-card__image" src=${initialCards[i].link}>
+    <div class="photo-card__description">
+      <h3 class="photo-card__title">${initialCards[i].name}</h3>
+      <button class="button photo-card__like-button" type="button"></button>
+    </div>
+  </div>`)
+  }
+  
+}
+
+
 function togglePopup() {
   popup.classList.toggle("popup_state_visible"); 
 }
@@ -28,7 +73,17 @@ function submitForm(event) {
   togglePopup();
 }
 
+
+
 editbutton.addEventListener ("click", togglePopup);
 editbutton.addEventListener ("click", renderForm);
 popupCloseButton.addEventListener ("click", togglePopup)
 form.addEventListener("submit", submitForm);
+
+
+
+// 'beforebegin' — вставка до открывающего тега;
+// 'afterbegin' — вставка после открывающего тега;
+// 'afterend' — вставка после закрывающего тега.
+
+initial();
