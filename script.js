@@ -49,7 +49,7 @@ function initial() {
 }
 
 
-function togglePopup() {
+function togglePopup(popup) {
   popup.classList.toggle("popup_state_visible"); 
 }
 
@@ -75,9 +75,9 @@ function submitForm(event) {
 
 
 
-editbutton.addEventListener ("click", togglePopup);
+editbutton.addEventListener ("click", () => togglePopup(popup));
 editbutton.addEventListener ("click", renderForm);
-popupCloseButton.addEventListener ("click", togglePopup)
+popupCloseButton.addEventListener ("click", () => togglePopup(popup));
 form.addEventListener("submit", submitForm);
 
 
