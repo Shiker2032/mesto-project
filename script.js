@@ -1,11 +1,12 @@
 let profile = document.querySelector(".profile");
 let popup = document.querySelector(".popup");
 let form = popup.querySelector(".form");
+let cardForm = document.querySelector("[name='card-edit-form']");
 let editbutton = document.querySelector(".profile__edit-button");
 let profileCloseButton = document.querySelector("[id='profile-form-close']");
-
-
-
+let addButton = document.querySelector(".profile__add-button");
+let popupCard = document.querySelector("[id='popup-card']");
+let cardCloseButton = document.querySelector("[id='card-form-close']");
 
 function initial() {
   const initialCards = [
@@ -71,33 +72,10 @@ function submitForm(event) {
   let oldActivity = profile.querySelector(".profile__subtitle");  
   oldName.textContent = newName.value;
   oldActivity.textContent = newActivity.value;
-  togglePopup();
+  togglePopup(popup);
 }
 
-
-
-editbutton.addEventListener ("click", () => togglePopup(popup));
-editbutton.addEventListener ("click", renderForm);
-profileCloseButton.addEventListener ("click", () => togglePopup(popup));
-form.addEventListener("submit", submitForm);
-
-
-// 'beforebegin' — вставка до открывающего тега;
-// 'afterbegin' — вставка после открывающего тега;
-// 'afterend' — вставка после закрывающего тега.
-
-initial();
-
-
-let addButton = document.querySelector(".profile__add-button");
-let popupCard = document.querySelector("[id='popup-card']");
-let cardCloseButton = document.querySelector("[id='card-form-close']");
-
-addButton.addEventListener("click", () => togglePopup(popupCard));
-cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
-
-let cardForm = document.querySelector("[name='card-edit-form']");
-cardForm.addEventListener("submit", function() {
+function submitCard(event) {
   event.preventDefault();
   let cardName = cardForm.querySelector("[id='card-name-input']")
   let cardUrl = cardForm.querySelector("[id='card-url-input']")
@@ -111,5 +89,15 @@ cardForm.addEventListener("submit", function() {
     <button class="button photo-card__like-button" type="button"></button>
   </div>
 </div>`)
-});
+}
+
+initial();
+form.addEventListener("submit", submitForm);
+editbutton.addEventListener ("click", () => togglePopup(popup));
+editbutton.addEventListener ("click", renderForm);
+profileCloseButton.addEventListener ("click", () => togglePopup(popup));
+cardForm.addEventListener("submit", submitCard);
+addButton.addEventListener("click", () => togglePopup(popupCard));
+cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
+
 
