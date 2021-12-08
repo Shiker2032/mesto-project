@@ -56,6 +56,19 @@ function initial() {
   likeBtn.addEventListener("click", function (event) {
     event.target.classList.toggle("like-button_state_liked");
   })
+  let cardBtn = document.querySelector(".photo-card__image");
+  cardBtn.classList.add("button");
+  cardBtn.addEventListener("click", function(event) {
+    let card = event.target;
+    let popup = document.querySelector(".popup-image-view");
+    let popupImage = document.querySelector(".popup-image");
+    let popupCloseBtn = document.querySelector(".popup-image__close-button");
+    popupCloseBtn.addEventListener("click", function () {
+      popup.classList.remove("popup-image-view_state_visible");
+    })
+    popupImage.src = card.src;
+    popup.classList.toggle("popup-image-view_state_visible");    
+  })
   }  
 }
 
