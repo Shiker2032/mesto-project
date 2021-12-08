@@ -38,16 +38,25 @@ function initial() {
 
   for(i = 0; i < initialCards.length; i++){
     let photoCards =  document.querySelector(".photo-cards");
+
     photoCards.insertAdjacentHTML("afterbegin", 
     `<div class="photo-card">
     <img alt="${initialCards[i].name}" class="photo-card__image" src=${initialCards[i].link}>
+    <img class="button delete-button" src="./images/Trash.svg"></img>
     <div class="photo-card__description">
       <h3 class="photo-card__title">${initialCards[i].name}</h3>
       <button class="button photo-card__like-button" type="button"></button>
     </div>
   </div>`)
-  }
-  
+  let deleteBtn = document.querySelector(".delete-button");
+  deleteBtn.addEventListener("click", function (event) {
+    event.target.parentNode.remove();
+  })
+  let likeBtn = document.querySelector(".photo-card__like-button")
+  likeBtn.addEventListener("click", function (event) {
+    event.target.classList.toggle("like-button_state_liked");
+  })
+  }  
 }
 
 
@@ -99,5 +108,4 @@ profileCloseButton.addEventListener ("click", () => togglePopup(popup));
 cardForm.addEventListener("submit", submitCard);
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
-
 
