@@ -7,13 +7,7 @@
 	<link href="./pages/index.css" rel="stylesheet">
 </head>
 <style>
-	.delete-button {
-		width: 18px;
-		height: 18px;
-		position: absolute;
-		right: 5px;
-		top: 20px;
-	}
+	
 	.popup-image {
 		width: 100%;
 		max-width: 75vw;
@@ -40,17 +34,8 @@
 		display: block;
 		}
 
-		.popup-image__close-button {
-			position: fixed;
-			right: 5%;
-			top: 5%;
-}
-.popup-image__title {
-	position: fixed;
-    top: 90%;
-		left: 10%;
+		
 
-}
 		
 
 </style>
@@ -142,7 +127,7 @@
 	<template id="photo-card-template">
 		<div class="photo-card">
 			<img alt="" class="photo-card__image" src="">
-			<img class="button delete-button" src="./images/Trash.svg"></img>
+			<img class="button photo-card__delete-button" src="./images/Trash.svg"></img>
 			<div class="photo-card__description">
 				<h3 class="photo-card__title"></h3>
 				<button class="button photo-card__like-button" type="button"></button>

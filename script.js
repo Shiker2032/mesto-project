@@ -9,7 +9,7 @@ let popupCard = document.querySelector("[id='popup-card']");
 let cardCloseButton = document.querySelector("[id='card-form-close']");
 
 function addCardFunctions (photoCardElement) {
-  let deleteButton = photoCardElement.querySelector(".delete-button");
+  let deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
   deleteButton.addEventListener("click", function (event) {
     event.target.parentNode.remove();
   })

@@ -1,0 +1,7 @@
+.photo-card__delete-button {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 5px;
+  top: 20px;
+}
