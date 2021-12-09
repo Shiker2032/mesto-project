@@ -38,41 +38,19 @@ function initial() {
 
   for(i = 0; i < initialCards.length; i++){
     let photoCards =  document.querySelector(".photo-cards");
+    let photoCardsTemplate = document.querySelector("#photo-card-template").content;
+    let photoCardElement = photoCardsTemplate.querySelector(".photo-card").cloneNode(true);
+    let imageElement =  photoCardElement.querySelector(".photo-card__image");
+    let imageTitleElement = photoCardElement.querySelector(".photo-card__title");
+    imageTitleElement.textContent = initialCards[i].name;
+    imageElement.src = initialCards[i].link;
+    imageElement.alt = initialCards[i].name;
+    document.querySelector(".photo-cards").append(photoCardElement);
 
-    photoCards.insertAdjacentHTML("afterbegin", 
-    `<div class="photo-card">
-    <img alt="${initialCards[i].name}" class="photo-card__image" src=${initialCards[i].link}>
-    <img class="button delete-button" src="./images/Trash.svg"></img>
-    <div class="photo-card__description">
-      <h3 class="photo-card__title">${initialCards[i].name}</h3>
-      <button class="button photo-card__like-button" type="button"></button>
-    </div>
-  </div>`)
-  let deleteBtn = document.querySelector(".delete-button");
-  deleteBtn.addEventListener("click", function (event) {
-    event.target.parentNode.remove();
-  })
-  let likeBtn = document.querySelector(".photo-card__like-button")
-  likeBtn.addEventListener("click", function (event) {
-    event.target.classList.toggle("like-button_state_liked");
-  })
-  let cardBtn = document.querySelector(".photo-card__image");
-  cardBtn.classList.add("button");
-  cardBtn.addEventListener("click", function(event) {
-    let card = event.target;
-    let popup = document.querySelector(".popup-image-view");
-    let popupImage = document.querySelector(".popup-image");
-    let popupCloseBtn = document.querySelector(".popup-image__close-button");
-    popupCloseBtn.addEventListener("click", function () {
-      popup.classList.remove("popup-image-view_state_visible");
-    })
-    popupImage.src = card.src;
-    popup.classList.toggle("popup-image-view_state_visible");    
-  })
-  }  
+    
+    
+  }
 }
-
-
 function togglePopup(popup) {
   popup.classList.toggle("popup_state_visible"); 
 }
@@ -94,7 +72,7 @@ function submitForm(event) {
   let oldActivity = profile.querySelector(".profile__subtitle");  
   oldName.textContent = newName.value;
   oldActivity.textContent = newActivity.value;
-  togglePopup(popup);
+  togglePopup(popup)
 }
 
 function submitCard(event) {
@@ -103,16 +81,18 @@ function submitCard(event) {
   let cardUrl = cardForm.querySelector("[id='card-url-input']")
   togglePopup(popupCard);
   let photoCards =  document.querySelector(".photo-cards");
-  photoCards.insertAdjacentHTML("afterbegin", `
-  <div class="photo-card">
-  <img alt="${cardName.value}" class="photo-card__image" src=${cardUrl.value}>
-  <div class="photo-card__description">
-    <h3 class="photo-card__title">${cardName.value}</h3>
-    <button class="button photo-card__like-button" type="button"></button>
-  </div>
-</div>`)
-}
+  let photoCardsTemplate = document.querySelector("#photo-card-template").content;
+  let photoCardElement = photoCardsTemplate.querySelector(".photo-card").cloneNode(true);
+  let imageElement =  photoCardElement.querySelector(".photo-card__image");
+  let imageTitleElement = photoCardElement.querySelector(".photo-card__title");
+  imageElement.alt = cardName;
+  imageElement.src = cardUrl;
+  imageTitleElement.textContent = cardName;
+  let photoCardsContainer = document.querySelectorAll(".photo-cards");
+  photoCardsContainer.append(photoCardElement);
 
+}
+  
 initial();
 form.addEventListener("submit", submitForm);
 editbutton.addEventListener ("click", () => togglePopup(popup));
@@ -121,4 +101,3 @@ profileCloseButton.addEventListener ("click", () => togglePopup(popup));
 cardForm.addEventListener("submit", submitCard);
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
-
