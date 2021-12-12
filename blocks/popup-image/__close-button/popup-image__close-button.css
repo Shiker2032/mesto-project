@@ -6,3 +6,10 @@
   height: 32px;
   background-image: url(../../../images/close\ icon.svg);
 }
+
+@media (max-width: 767px) {
+  .popup-image__close-button {
+    width: 20px;
+    height: 20px;
+  }
+}
