@@ -114,7 +114,7 @@ function submitCard(event) {
   imageTitleElement.textContent = cardName.value;
   let photoCardsContainer = document.querySelector(".photo-cards");
   addCardFunctions(photoCardElement);
-  photoCardsContainer.append(photoCardElement);
+  photoCardsContainer.prepend(photoCardElement);
 }
   
 initial();
