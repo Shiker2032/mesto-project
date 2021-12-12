@@ -1,0 +1,14 @@
+.popup-image__wrapper {
+  width: 75vw;  
+  height: 75vh;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+@media (max-width: 767px) {
+  .popup-image__wrapper {
+    top: 70%;
+  }
+}

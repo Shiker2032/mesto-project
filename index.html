@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>Mesto</title>
-	<link href="./pages/index.css" rel="stylesheet">
-</head>
-<style>
-	.popup-image-container {
-	width: 75vw;  
-  height: 75vh;
-  position: fixed;
-	transform: translate(-50%, -50%);
-	top: 50%;
-	left: 50%;
-	}
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>Mesto</title>
+		<link href="./pages/index.css" rel="stylesheet">
+	</head>
+	<style>
+
 </style>
 <body class="body">
 <div class="page">
@@ -23,7 +16,7 @@
 	</header>
 
 		<div class="popup-image">
-			<div class="popup-image-container">
+			<div class="popup-image__wrapper">
 			<button class="button popup-image__close-button" type="button"></button>
 			<img src="./images/elbrus.png" class="popup-image__image">
 			<p class="popup-image__title"></p>
@@ -81,14 +74,18 @@
 		</section>
 	</main>
 	<template id="photo-card-template">
+		
 		<div class="photo-card">
+			<div class="photo-card__overlay">
 			<img alt="" class="photo-card__image" src="">
+		</div>
 			<img class="button photo-card__delete-button" src="./images/Trash.svg"></img>
 			<div class="photo-card__description">
 				<h3 class="photo-card__title"></h3>
 				<button class="button photo-card__like-button" type="button"></button>
 			</div>	
 		</div>
+		
 </template>
 	<script src="./script.js"></script>
 	<footer class="footer">
