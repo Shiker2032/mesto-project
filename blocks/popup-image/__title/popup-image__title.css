@@ -1,5 +1,4 @@
 .popup-image__title {
-	position: fixed;
-    top: 90%;
-		left: 10%;
+	position: absolute;
+	margin: 0;	
 }

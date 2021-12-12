@@ -7,18 +7,27 @@
 	<link href="./pages/index.css" rel="stylesheet">
 </head>
 <style>
+	.popup-image-container {
+	width: 75vw;  
+  height: 75vh;
+  position: fixed;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	}
 </style>
 <body class="body">
 <div class="page">
 	<header class="header">
 		<img alt="Лого" class="header__logo" src="./images/logo.svg">
 	</header>
-	<main class="content">
 
 		<div class="popup-image">
-			<img src="./images/close icon.svg" class="button popup-image__close-button">
+			<div class="popup-image-container">
+			<button class="button popup-image__close-button" type="button"></button>
 			<img src="./images/elbrus.png" class="popup-image__image">
-			<p class="popup-image__title">Текст</p>
+			<p class="popup-image__title"></p>
+		</div>
 		</div>
 
 		<div class="popup">

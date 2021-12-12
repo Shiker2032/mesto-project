@@ -1,7 +1,7 @@
 .popup-image {
   visibility: hidden;
   opacity: 0;
-  transition: 0.5s linear;
+  transition: visibility 0.3s, opacity 0.3s linear;
   background-color: rgba(0,0,0, 0.7);
   width: 100vw;
   height: 100vh;

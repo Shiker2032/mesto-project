@@ -20,14 +20,17 @@ function addCardFunctions (photoCardElement) {
   let cardPop = photoCardElement.querySelector(".photo-card__image");//popup-картинка
    cardPop.classList.add("button");
    cardPop.addEventListener("click", function(event) {
-     let card = event.target;
+     let card = event.target;   
      let popup = document.querySelector(".popup-image");
+     let popupTitle = popup.querySelector(".popup-image__title");
      let popupImage = document.querySelector(".popup-image__image");
    let popupCloseBtn = document.querySelector(".popup-image__close-button");
    popupCloseBtn.addEventListener("click", function () {
      popup.classList.remove("popup-image_state_visible");
    })
    popupImage.src = card.src;
+   popupTitle.textContent = card.alt;
+
    popup.classList.toggle("popup-image_state_visible");    
  })
 }
