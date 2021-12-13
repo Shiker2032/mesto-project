@@ -21,7 +21,7 @@ function addCardFunctions(photoCardElement) {
 	cardPop.classList.add("button");
 	cardPop.addEventListener("click", function (event) {
 		let card = event.target;
-		let popup = document.querySelector(".popup-image");
+		let popup = document.querySelector("#popup-image");
 		let popupTitle = popup.querySelector(".popup-image__title");
 		let popupImage = document.querySelector(".popup-image__image");
 		let popupCloseBtn = document.querySelector(".popup-image__close-button");
