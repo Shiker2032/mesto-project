@@ -1,15 +1,4 @@
-.popup-image__close-button {
-  position: absolute;
+.popup-image__close-button {  
   right: -4%;
-  top: -8%;
-  width: 32px;
-  height: 32px;
-  background-image: url(../../../images/close\ icon.svg);
-}
-
-@media (max-width: 767px) {
-  .popup-image__close-button {
-    width: 20px;
-    height: 20px;
-  }
+  top: -8%; 
 }

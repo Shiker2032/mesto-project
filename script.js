@@ -24,7 +24,7 @@ function addCardFunctions(photoCardElement) {
 		let popup = document.querySelector(".popup-image");
 		let popupTitle = popup.querySelector(".popup-image__title");
 		let popupImage = document.querySelector(".popup-image__image");
-		let popupCloseBtn = document.querySelector(".popup-image__close-button");
+		let popupCloseBtn = document.querySelector("#popup-image__close-button");
 		popupCloseBtn.addEventListener("click", function () {
 			popup.classList.remove("popup-image_state_visible");
 		})
