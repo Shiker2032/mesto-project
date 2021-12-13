@@ -1,6 +1,6 @@
 let profile = document.querySelector(".profile");
-let popup = document.querySelector(".popup");
-let form = popup.querySelector(".form");
+let popupProfile = document.querySelector("#popup-profile-edit");
+let form = popupProfile.querySelector(".form");
 let cardForm = document.querySelector("[name='card-edit-form']");
 let editbutton = document.querySelector(".profile__edit-button");
 let profileCloseButton = document.querySelector("[id='profile-form-close']");
@@ -99,7 +99,7 @@ function submitForm(event) {
 	let oldActivity = profile.querySelector(".profile__subtitle");
 	oldName.textContent = newName.value;
 	oldActivity.textContent = newActivity.value;
-	togglePopup(popup)
+	togglePopup(popupProfile)
 }
 
 function submitCard(event) {
@@ -122,9 +122,9 @@ function submitCard(event) {
 
 initial();
 form.addEventListener("submit", submitForm);
-editbutton.addEventListener("click", () => togglePopup(popup));
+editbutton.addEventListener("click", () => togglePopup(popupProfile));
 editbutton.addEventListener("click", renderForm);
-profileCloseButton.addEventListener("click", () => togglePopup(popup));
+profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
 cardForm.addEventListener("submit", submitCard);
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
