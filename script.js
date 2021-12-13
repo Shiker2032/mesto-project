@@ -111,13 +111,15 @@ function submitCard(event) {
 	let photoCardElement = photoCardTemplate.querySelector(".photo-card").cloneNode(true);
 	let imageElement = photoCardElement.querySelector(".photo-card__image");
 	let imageTitleElement = photoCardElement.querySelector(".photo-card__title");
-	togglePopup(popupCard);
 	imageElement.alt = cardName.value;
 	imageElement.src = cardUrl.value;
 	imageTitleElement.textContent = cardName.value;
 	let photoCardsContainer = document.querySelector(".photo-cards");
 	addCardFunctions(photoCardElement);
 	photoCardsContainer.prepend(photoCardElement);
+	cardName.value = "";
+	cardUrl.value = "";
+
 }
 
 initial();
