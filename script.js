@@ -27,12 +27,10 @@ function addCardFunctions(photoCardElement) {
 		const popup = document.querySelector("#popup-image-container");
 		const popupTitle = popup.querySelector(".popup-image__title");
 		const popupImage = document.querySelector(".popup-image__image");
-		const popupCloseBtn = document.querySelector("#popup-image__close-button");
-		
+		const popupCloseBtn = document.querySelector("#popup-image__close-button");		
 		popupImage.src = card.src;
 		popupTitle.textContent = card.alt;
 		popupImage.alt = card.alt;
-
 		togglePopup(popup);
 	})
 }
@@ -104,11 +102,9 @@ function submitForm(event) {
 }
 
 function submitCard(event) {
-	event.preventDefault();
-	
+	event.preventDefault();	
 	const photoCardsContainer = document.querySelector(".photo-cards");
-	photoCardsContainer.prepend(createCard());
-	
+	photoCardsContainer.prepend(createCard());	
 }
 
 function createCard() {
@@ -120,14 +116,11 @@ function createCard() {
 	const imageTitleElement = photoCardElement.querySelector(".photo-card__title");
 	imageElement.alt = cardName.value;
 	imageElement.src = cardUrl.value;
-	imageTitleElement.textContent = cardName.value;
-	
+	imageTitleElement.textContent = cardName.value;	
 	addCardFunctions(photoCardElement);
 	cardName.value = "";
 	cardUrl.value = "";	
-	return(photoCardElement);
-	
-	
+	return(photoCardElement);	
 }
 
 initial();
@@ -139,4 +132,3 @@ cardForm.addEventListener("submit", submitCard);
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 ImageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
-
