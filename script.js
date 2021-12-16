@@ -14,7 +14,8 @@ const ImageContainerCloseBtn = document.querySelector("#popup-image__close-butto
 function addCardFunctions(photoCardElement) {
 	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
 	deleteButton.addEventListener("click", function (event) {
-		event.target.parentNode.remove();
+		// event.target.parentNode.remove();
+		event.target.closest(".photo-card").remove();
 	})
 	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
 	likeButton.addEventListener("click", function () {
