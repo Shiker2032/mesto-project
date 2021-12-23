@@ -12,12 +12,11 @@ const addButton = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector("[id='popup-card']");
 const cardCloseButton = document.querySelector("[id='card-form-close']");
 const popupCardCloseBtn = document.querySelector("#popup-image__close-button");
-const ImageContainerCloseBtn = document.querySelector("#popup-image__close-button")
-const photoCards = document.querySelector(".photo-cards");
+const ImageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
-const photoCardTemplate = document.querySelector("#photo-card-template").content;
+const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
 const photoCardsContainer = document.querySelector(".photo-cards");
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
@@ -70,21 +69,21 @@ function initial() {
 		}
 	];
 	
-	 initialCards.forEach((element) =>{
+	 initialCards.forEach((element) => {
 		const photoCardElement =  createCard(element.name, element.link);
-		document.querySelector(".photo-cards").append(photoCardElement);
+		photoCardsContainer.append(photoCardElement);
 	 })		
 	}
 	
 function createCard(cardName, cardUrl) {
-	const photoCardElement = photoCardTemplate.querySelector(".photo-card").cloneNode(true);
-	const imageElement = photoCardElement.querySelector(".photo-card__image");
-	const imageTitleElement = photoCardElement.querySelector(".photo-card__title");
+	const photoCardEl = photoCardElement.cloneNode(true);
+	const imageElement = photoCardEl.querySelector(".photo-card__image");
+	const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
 	imageTitleElement.textContent = cardName;
 	imageElement.alt = cardName;
 	imageElement.src = cardUrl;
-	addCardFunctions(photoCardElement);
-	return photoCardElement;	
+	addCardFunctions(photoCardEl);
+	return photoCardEl;	
 }
 
 function togglePopup(popup) {
