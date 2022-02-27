@@ -66,3 +66,21 @@
   opacity: 1;
   pointer-events: all;
 }
+
+.form__element_invalid {
+  border-color: red;
+}
+
+.input__error {
+  color: red;
+  opacity: 0;
+}
+
+.input__error_visible {
+  opacity: 1;
+}
+
+.form__button_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
