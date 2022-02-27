@@ -3,9 +3,5 @@
   opacity: 0;
   transition: visibility 0.3s, opacity 0.3s linear;
   z-index: 1;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0%;
+  flex-direction: column;   
 }

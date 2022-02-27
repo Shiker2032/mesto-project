@@ -125,3 +125,23 @@ cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 ImageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
 
 
+//------------------------------------ Реакция попапов на нажатия ---------------------------------------------------
+
+function findActivePopup () {
+	return document.querySelector(".popup_state_visible");
+}
+
+// Закрытие по клику на оверлей
+overlay.addEventListener('click', () => {
+	const popup = findActivePopup();
+	togglePopup(popup);
+})
+
+// Закрытие по нажатию Escape
+document.addEventListener('keydown', (evt) => {
+	const popup = findActivePopup();
+	if ((evt.key === "Escape") && (popup != null)) {
+		togglePopup(popup);
+	}
+})
+
