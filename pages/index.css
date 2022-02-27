@@ -32,7 +32,7 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__wrapper/popup__wrapper.css);
+@import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/_state/popup_state_visible.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
@@ -43,9 +43,27 @@
 @import url(../blocks/form/__handlers/form__handlers.css);
 @import url(../blocks/form/__button/form__button.css);
 
-@import url(../blocks/popup-image/__wrapper/popup-image__wrapper.css);
+@import url(../blocks/popup-image/__content/popup-image__content.css);
 @import url(../blocks/photo-card/__overlay/photo-card__overlay.css);
 @import url(../blocks/popup-image/_state/popup-image_state_visible.css);
 @import url(../blocks/popup-image/__image/popup-image__image.css);
 @import url(../blocks/popup-image/__close-button/popup-image__close-button.css);
 @import url(../blocks/popup-image/__title/popup-image__title.css);
+
+
+.overlay {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);  
+}
+
+.overlay_visible {
+  opacity: 1;
+  pointer-events: all;
+}
