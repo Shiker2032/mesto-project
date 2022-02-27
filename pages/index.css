@@ -49,3 +49,20 @@
 @import url(../blocks/popup-image/__image/popup-image__image.css);
 @import url(../blocks/popup-image/__close-button/popup-image__close-button.css);
 @import url(../blocks/popup-image/__title/popup-image__title.css);
+
+.overlay {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);  
+}
+
+.overlay_visible {
+  opacity: 1;
+  pointer-events: all;
+}
