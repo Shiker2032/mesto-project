@@ -1,4 +1,4 @@
-.popup-image__content {
+.popup-image__wrapper {
   width: 75vw;  
   height: 75vh;
   position: fixed;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 767px) {
-  .popup-image__content {
+  .popup-image__wrapper {
     top: 70%;
   }
 }

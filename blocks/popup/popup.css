@@ -4,6 +4,7 @@
   transition: visibility 0.3s, opacity 0.3s linear;
   z-index: 1;
   flex-direction: column;
+  background-color: rgba(0,0,0, 0.7);
   width: 100vw;
   height: 100vh;
   position: fixed;

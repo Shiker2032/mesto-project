@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
-		<title>Mesto</title>
-		<link href="./pages/index.css" rel="stylesheet">
-	</head>
-	<body class="body">
-		<div class="page">
-			<header class="header">
-				<img alt="Лого" class="header__logo" src="./images/logo.svg">
-			</header>
-			<main class="content">
-		<div class="overlay"></div>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Mesto</title>
+	<link href="./pages/index.css" rel="stylesheet">
+</head>
+<body class="body">
+<div class="page">
+	<header class="header">
+		<img alt="Лого" class="header__logo" src="./images/logo.svg">
+	</header>
+	<main class="content">
 		<div class="popup" id="popup-image-container">
 			<div class="popup-image__wrapper">
 				<button class="button  popup__close-button popup-image__close-button" id="popup-image__close-button" type="button"></button>
@@ -20,9 +19,8 @@
 				<p class="popup-image__title"></p>
 			</div>
 		</div>
-
 		<div class="popup" id="popup-profile-edit">
-			<div class="popup__content">
+			<div class="popup__wrapper">
 				<h4 class="popup__heading">Редактировать профиль</h4>
 				<button class="button popup__close-button" id="profile-form-close" type="button"></button>
 				<form class="form" name="profile-edit-form">
@@ -35,10 +33,9 @@
 					</fieldset>
 				</form>
 			</div>
-			
 		</div>
 		<div class="popup" id="popup-card">
-			<div class="popup__content">
+			<div class="popup__wrapper">
 				<h4 class="popup__heading">Новое место</h4>
 				<button class="button popup__close-button" id="card-form-close" type="button"></button>
 				<form class="form" name="card-edit-form">

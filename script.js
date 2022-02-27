@@ -21,9 +21,6 @@ const photoCardsContainer = document.querySelector(".photo-cards");
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
 
-const overlay = document.querySelector(".overlay");
-
-
 function addCardFunctions(photoCardElement) {
 	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
 	deleteButton.addEventListener("click", function (event) {
@@ -91,7 +88,6 @@ function createCard(cardName, cardUrl) {
 
 function togglePopup(popup) {
 	popup.classList.toggle("popup_state_visible");
-	overlay.classList.toggle('overlay_visible');
 }
 
 function renderForm() {
@@ -124,6 +120,3 @@ addCardForm.addEventListener("submit", submitCard);
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 ImageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
-
-
-
