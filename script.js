@@ -1,12 +1,13 @@
 const profile = document.querySelector(".profile");
 const profileCloseButton = document.querySelector("[id='profile-form-close']");
 const popupProfile = document.querySelector("#popup-profile-edit");
-const form = popupProfile.querySelector(".form");
-const newName = form.querySelector("[id='user-name-input']");
-const newActivity = form.querySelector("[id='user-activity-input']");
+const profileForm = document.forms.profile_edit_form;
+const addCardForm = document.forms.card_edit_form;
+const newName = profileForm.querySelector("[id='user-name-input']");
+const newActivity = profileForm.querySelector("[id='user-activity-input']");
 const oldName = profile.querySelector(".profile__title");
 const oldActivity = profile.querySelector(".profile__subtitle");
-const addCardForm = document.querySelector("[name='card-edit-form']");
+
 const editbutton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector("[id='popup-card']");
@@ -109,13 +110,13 @@ function submitCard(event) {
 	event.preventDefault();	
 	const cardName = nameInput.value;
 	const cardUrl = urlInput.value;
-  nameInput.value="";
-	urlInput.value = "";
+	addCardForm.reset();
+ 
 	photoCardsContainer.prepend(createCard(cardName, cardUrl));	
 }
 
 initial();
-form.addEventListener("submit", submitForm);
+profileForm.addEventListener("submit", submitForm);
 editbutton.addEventListener("click", () => togglePopup(popupProfile));
 editbutton.addEventListener("click", renderForm);
 profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
@@ -144,4 +145,7 @@ document.addEventListener('keydown', (evt) => {
 		togglePopup(popup);
 	}
 })
+
+
+//----------------------------------------- Валидация форм -------------------------------------------------------------
 
