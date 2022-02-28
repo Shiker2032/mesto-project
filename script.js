@@ -167,7 +167,8 @@ const validationconfig = {
  function showInputError(inputElement, errorElement, errorMessage, config) {
 	inputElement.classList.add(config.inputErrorClass);
 	errorElement.classList.add(config.errorClass);
-	errorElement.textContent = errorMessage;
+	if (inputElement.id === "card-url-input") errorElement.textContent = "Не ссылка";
+	else errorElement.textContent = errorMessage;
  }
 
  function disableButton (buttonElement, config) {
