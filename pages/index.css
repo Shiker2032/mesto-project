@@ -4,7 +4,11 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/content/content.css);
 
+@import url(../blocks/overlay/overlay.css);
+@import url(../blocks/overlay/_visible/overlay_visible.css);
+
 @import url(../blocks/button/button.css);
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -40,6 +44,9 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__inputs/form__inputs.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_invalid/form__input_invalid.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_visible/form__input-error_visible.css);
 @import url(../blocks/form/__handlers/form__handlers.css);
 @import url(../blocks/form/__button/form__button.css);
 
@@ -49,40 +56,3 @@
 @import url(../blocks/popup-image/__image/popup-image__image.css);
 @import url(../blocks/popup-image/__close-button/popup-image__close-button.css);
 @import url(../blocks/popup-image/__title/popup-image__title.css);
-
-.overlay {
-  position: fixed;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);  
-}
-
-.overlay_visible {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.input__element_invalid {
-  border-color: red;
-}
-
-.input__error {
-  font-size: 12px;
-  line-height: 15px;
-  color: red;
-  opacity: 0;
-}
-
-.input__error_visible {
-  opacity: 1;
-}
-
-.form__button_disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}

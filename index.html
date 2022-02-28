@@ -29,9 +29,9 @@
 				<form class="form" name="profile_edit_form" novalidate>
 					<fieldset class="form__inputs">
 						<input class="form__input" id="user-name-input" name="user-name" minlength="2" maxlength="40" required type="text">
-						<span class="input__error" id="error-user-name-input"></span>
+						<span class="form__input-error" id="error-user-name-input"></span>
 						<input class="form__input" id="user-activity-input" name="user-activity" minlength="2" maxlength="200" required type="text">
-						<span class="input__error" id="error-user-activity-input"></span>
+						<span class="form__input-error" id="error-user-activity-input"></span>
 					</fieldset>
 					<fieldset class="form__handlers">
 						<button class="button form__button" type="submit">Сохранить</button>
@@ -47,10 +47,10 @@
 				<form class="form" name="card_edit_form" novalidate>
 					<fieldset class="form__inputs">
 						<input class="form__input" id="card-name-input" name="card-name" minlength="2" maxlength="30"  placeholder="Название" required type="text">
-						<span class="input__error" id="error-card-name-input"></span>
+						<span class="form__input-error" id="error-card-name-input"></span>
 						<input class="form__input" id="card-url-input" name="card-url"  placeholder="Ссылка на картинку" required type="text"
 						pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
-						<span class="input__error" id="error-card-url-input"></span>
+						<span class="form__input-error" id="error-card-url-input"></span>
 					</fieldset>
 					<fieldset class="form__handlers">
 						<button class="button form__button" type="submit">Создать</button>

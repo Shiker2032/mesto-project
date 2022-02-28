@@ -3,19 +3,19 @@ export const validationconfig = {
 	inputSelector: '.form__input',
 	buttonSelector: '.form__button',
 	buttonDisableClass: 'form__button_disabled',
-	errorClass: 'input__error_visible',
-	inputErrorClass : 'input__element_invalid'
+	visibleErrorClass: 'form__input-error_visible',
+	inputInvalidClass : 'input__element_invalid'
 }
 
  function hideInputError(inputElement, errorElement, config) {
-	inputElement.classList.remove(config.inputErrorClass);
-	errorElement.classList.remove(config.errorClass);
+	inputElement.classList.remove(config.inputInvalidClass);
+	errorElement.classList.remove(config.visibleErrorClass);
 	errorElement.textContent = '';
  }
 
  function showInputError(inputElement, errorElement, errorMessage, config) {
-	inputElement.classList.add(config.inputErrorClass);
-	errorElement.classList.add(config.errorClass);
+	inputElement.classList.add(config.inputInvalidClass);
+	errorElement.classList.add(config.visibleErrorClass);
 	if (inputElement.id === "card-url-input") errorElement.textContent = "Не ссылка";
 	else errorElement.textContent = errorMessage;
  }
