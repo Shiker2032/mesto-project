@@ -1,6 +1,6 @@
 export const validationconfig = {
 	formSelector: '.form',
-	inputSelector: '.form__item',
+	inputSelector: '.form__input',
 	buttonSelector: '.form__button',
 	buttonDisableClass: 'form__button_disabled',
 	errorClass: 'input__error_visible',
