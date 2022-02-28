@@ -75,7 +75,8 @@ function initial() {
 	 initialCards.forEach((element) => {
 		const photoCardElement =  createCard(element.name, element.link);
 		photoCardsContainer.append(photoCardElement);
-	 })		
+	 })	
+	 renderForm();	
 	}
 	
 function createCard(cardName, cardUrl) {

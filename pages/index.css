@@ -67,11 +67,13 @@
   pointer-events: all;
 }
 
-.form__element_invalid {
+.input__element_invalid {
   border-color: red;
 }
 
 .input__error {
+  font-size: 12px;
+  line-height: 15px;
   color: red;
   opacity: 0;
 }
