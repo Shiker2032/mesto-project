@@ -2,7 +2,7 @@
 
 
 import {profileForm, submitForm, addCardForm, togglePopup,
-	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm } from './modal.js'
+	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm } from '../components/modal.js'
 
 profileForm.addEventListener("submit", submitForm);
 addCardForm.addEventListener("submit", submitCard);
@@ -15,10 +15,12 @@ editbutton.addEventListener("click", renderForm);
 renderForm();	
 
 
-import {enableValidation, validationconfig} from './validate.js'
+import {enableValidation, validationconfig} from '../components/validate.js'
 enableValidation(validationconfig);
 
-import {initial} from './card.js';
+import {initial} from '../components/card.js';
 initial();
+
+import "../src/index.css";
 
 

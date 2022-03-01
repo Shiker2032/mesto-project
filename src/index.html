@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<title>Mesto</title>
-	<link href="./pages/index.css" rel="stylesheet">
+
 </head>
 <body class="body">
 <div class="page">
 	<header class="header">
-		<img alt="Лого" class="header__logo" src="./images/logo.svg">
+		<img alt="Лого" class="header__logo" src="<%=require('..//images/logo.svg')%>">
 	</header>
 	<main class="content">
 		<div class="overlay" id="overlay"></div>
@@ -61,7 +61,7 @@
 
 		<section class="profile">
 			<div class="profile__info">
-				<img alt="Аватар" class="profile__avatar" src="images/Avatar.png">
+				<img alt="Аватар" class="profile__avatar" src="<%=require('../images/Avatar.png')%>">
 				<div class="profile__wrapper-info">
 					<div class="profile__title-wrapper">
 						<h3 class="profile__title">Жак-Ив Кусто</h3>
@@ -80,16 +80,15 @@
 			<div class="photo-card__overlay">
 				<img alt="" class="photo-card__image" src="">
 			</div>
-			<img class="button photo-card__delete-button" src="./images/Trash.svg">
+			<img class="button photo-card__delete-button" src="<%=require('../images/trash.svg')%>">
 			<div class="photo-card__description">
 				<h3 class="photo-card__title"></h3>
 				<button class="button photo-card__like-button" type="button"></button>
 			</div>
 		</div>
-	</template>
-	<script type="module" src="./script.js"></script>
+	</template>	
 	<footer class="footer">
-		<p class="footer__copyright">&#169; 2021 Mesto Russia</p>
+		<p class="footer__copyright">&#169; 2021 Mesto Russia</p>	
 	</footer>
 </div>
 </body>
