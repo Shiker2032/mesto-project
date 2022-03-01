@@ -60,9 +60,7 @@ function setEventListeners (formElement, config) {
 
 	inputList.forEach((inputElement) => {
 		inputElement.addEventListener('input', () => {
-			// Проверка валидации этого инпута
 			checkInputValidity(formElement, inputElement, config);
-			// Проверять состояние кнопки сабмита			
 			toggleButtonState(formElement, inputList, config);
 		});
 		toggleButtonState(formElement, inputList, config);

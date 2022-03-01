@@ -2,7 +2,8 @@
 
 
 import {profileForm, submitForm, addCardForm, togglePopup,
-	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm } from '../components/modal.js'
+	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm, popupImageContainer }
+	 from '../components/modal.js'
 
 profileForm.addEventListener("submit", submitForm);
 addCardForm.addEventListener("submit", submitCard);

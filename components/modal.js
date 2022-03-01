@@ -11,6 +11,7 @@ const editbutton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector("[id='popup-card']");
 const cardCloseButton = document.querySelector("[id='card-form-close']");
+const popupImageContainer = document.querySelector("#popup-image-container");
 const ImageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
@@ -27,13 +28,11 @@ function findActivePopup () {
 	return document.querySelector(".popup_state_visible");
 }
 
-// Закрытие по клику на оверлей
 overlay.addEventListener('click', () => {
 	const popup = findActivePopup();
 	togglePopup(popup);
 })
 
-// Закрытие по нажатию Escape
 document.addEventListener('keydown', (evt) => {
 	const popup = findActivePopup();
 	if ((evt.key === "Escape") && (popup != null)) {
@@ -54,18 +53,14 @@ function submitForm(event) {
 }
 
 function submitCard(event) {
-	event.preventDefault();	
-	const cardName = nameInput.value;
 	const cardUrl = urlInput.value;
-	addCardForm.reset();
- 
+	const cardName = nameInput.value;
+
+	event.preventDefault();	
+	addCardForm.reset(); 
 	photoCardsContainer.prepend(createCard(cardName, cardUrl));	
 }
 
-
-
-
 export { profileForm, submitForm, addCardForm, 
-	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm 
+	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm, popupImageContainer 
   } 
-
