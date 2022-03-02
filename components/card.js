@@ -1,13 +1,14 @@
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
-export const photoCardsContainer = document.querySelector(".photo-cards");
+const photoCardsContainer = document.querySelector(".photo-cards");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
 
-import { togglePopup } from "./modal.js";
 
-export function initial() {
+import { togglePopup } from "./utils.js";
+
+function initial() {
 	const initialCards = [
 		{
 			name: 'Архыз',
@@ -35,13 +36,13 @@ export function initial() {
 		}
 	];
 	
-	 initialCards.forEach((element) => {
+	initialCards.forEach((element) => {
 		const photoCardElement =  createCard(element.name, element.link);
 		photoCardsContainer.append(photoCardElement);
-	 });
-	}
+	});
+}
 	
-export function createCard(cardName, cardUrl) {
+function createCard(cardName, cardUrl) {
 	const photoCardEl = photoCardElement.cloneNode(true);
 	const imageElement = photoCardEl.querySelector(".photo-card__image");
 	const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
@@ -71,3 +72,5 @@ function addCardFunctions(photoCardElement) {
 		togglePopup(popupImageContainer);
 	});
 }
+
+export {photoCardsContainer, initial, createCard};

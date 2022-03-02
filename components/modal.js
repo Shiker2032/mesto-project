@@ -16,13 +16,9 @@ const ImageContainerCloseBtn = document.querySelector("#popup-image__close-butto
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
 const overlay = document.querySelector('#overlay');
-
+import {togglePopup} from "./utils.js";
 import { photoCardsContainer, createCard } from "./card.js";
 
-export function togglePopup(popup) {
-	popup.classList.toggle("popup_state_visible");
-	overlay.classList.toggle('overlay_visible');
-}
 
 function findActivePopup () {
 	return document.querySelector(".popup_state_visible");
@@ -61,6 +57,17 @@ function submitCard(event) {
 	photoCardsContainer.prepend(createCard(cardName, cardUrl));	
 }
 
-export { profileForm, submitForm, addCardForm, 
-	submitCard, editbutton, popupProfile, profileCloseButton, addButton, popupCard, cardCloseButton, ImageContainerCloseBtn, renderForm, popupImageContainer 
-  } 
+function setEventListeners () {
+profileForm.addEventListener("submit", submitForm);
+addCardForm.addEventListener("submit", submitCard);
+editbutton.addEventListener("click", () => togglePopup(popupProfile));
+profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
+addButton.addEventListener("click", () => togglePopup(popupCard));
+cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
+ImageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
+editbutton.addEventListener("click", renderForm);
+}
+
+renderForm();
+
+export {setEventListeners}
