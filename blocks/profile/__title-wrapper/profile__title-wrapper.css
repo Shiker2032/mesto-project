@@ -1,13 +1,12 @@
 .profile__title-wrapper {
   display: flex;
   min-width: max-content;
-  align-items: end;
+  align-items: flex-end;
 }
 
 @media (max-width: 1000px) {
   .profile__title-wrapper {
       min-width: 280px;
       justify-content: center;
-      justify-content: end;
-  }
+      justify-content: flex-end;  }
 }

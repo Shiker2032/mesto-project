@@ -4,7 +4,11 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/content/content.css);
 
+@import url(../blocks/overlay/overlay.css);
+@import url(../blocks/overlay/_visible/overlay_visible.css);
+
 @import url(../blocks/button/button.css);
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -32,18 +36,21 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__wrapper/popup__wrapper.css);
+@import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/_state/popup_state_visible.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/__inputs/form__inputs.css);
 @import url(../blocks/form/__input/form__input.css);
-@import url(../blocks/form/__item/form__item.css);
+@import url(../blocks/form/__input/_invalid/form__input_invalid.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_visible/form__input-error_visible.css);
 @import url(../blocks/form/__handlers/form__handlers.css);
 @import url(../blocks/form/__button/form__button.css);
 
-@import url(../blocks/popup-image/__wrapper/popup-image__wrapper.css);
+@import url(../blocks/popup-image/__content/popup-image__content.css);
 @import url(../blocks/photo-card/__overlay/photo-card__overlay.css);
 @import url(../blocks/popup-image/_state/popup-image_state_visible.css);
 @import url(../blocks/popup-image/__image/popup-image__image.css);

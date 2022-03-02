@@ -1,4 +1,4 @@
-.popup__wrapper {
+.popup__content {
   max-width: 430px;
   width: 100%;
   min-height: 330px;
@@ -13,7 +13,7 @@
 }
 
 @media (max-width: 1000px) {
-  .popup__wrapper {
+  .popup__content {
     max-width: 282px;
     top: 43%;
   }
