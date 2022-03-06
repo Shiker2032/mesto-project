@@ -8,9 +8,11 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 
 function togglePopup(popup) {
-	const overlay = popup.querySelector(".overlay");
+
 	popup.classList.toggle("popup_state_visible");  
-	overlay.classList.toggle("overlay_visible");
+	popup.addEventListener("click", (evt) => {
+		if (!evt.target.classList.contains("popup__content")) togglePopup(popup);
+	})
 	document.addEventListener('keydown',  closeByEsc)
 }
 
@@ -32,17 +34,6 @@ profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 imageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
-
-const overlays = document.querySelectorAll('.overlay');
-overlays.forEach((overlayElement) => {
-	overlayElement.addEventListener("click", (evt) => {
-		const popup = findActivePopup();
-		togglePopup(popup)
-	} )
-})
 }
 
 export {setPopupEventListeners, togglePopup}
-
-
-
