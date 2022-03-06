@@ -10,8 +10,7 @@
 	<header class="header">
 		<img alt="Лого" class="header__logo" src="<%=require('../src/images/logo.svg')%>">
 	</header>
-	<main class="content">
-		<div class="overlay" id="overlay"></div>
+	<main class="content">	
 		<div class="popup" id="popup-image-container">
 			<div class="popup-image__content">
 				<button class="button  popup__close-button popup-image__close-button" id="popup-image__close-button" type="button"></button>
@@ -20,6 +19,7 @@
 			</div>
 		</div>
 		<div class="popup" id="popup-profile-edit">
+			<div class="overlay" id="overlay"></div>
 			<div class="popup__content">
 				<h4 class="popup__heading">Редактировать профиль</h4>
 				<button class="button popup__close-button" id="profile-form-close" type="button"></button>
@@ -37,6 +37,7 @@
 			</div>
 		</div>
 		<div class="popup" id="popup-card">
+			<div class="overlay" id="overlay"></div>
 			<div class="popup__content">
 				<h4 class="popup__heading">Новое место</h4>
 				<button class="button popup__close-button" id="card-form-close" type="button"></button>

@@ -7,11 +7,10 @@ const cardCloseButton = document.querySelector("[id='card-form-close']");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 
-const overlay = document.querySelector('#overlay');
-
 function togglePopup(popup) {
-	popup.classList.toggle("popup_state_visible");
-	overlay.classList.toggle('overlay_visible');
+	const overlay = popup.querySelector(".overlay");
+	popup.classList.toggle("popup_state_visible");  
+	overlay.classList.toggle("overlay_visible");
 	document.addEventListener('keydown',  closeByEsc)
 }
 
@@ -27,17 +26,20 @@ function closeByEsc(evt) {
 	}
 }
 
-overlay.addEventListener("click", (evt) => {
-	const popup = findActivePopup();
-	if (!evt.target.classList.contains('popup')) togglePopup(popup)
-})
-
 function setPopupEventListeners () {
 editbutton.addEventListener("click", () => togglePopup(popupProfile));
 profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 imageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
+
+const overlays = document.querySelectorAll('.overlay');
+overlays.forEach((overlayElement) => {
+	overlayElement.addEventListener("click", (evt) => {
+		const popup = findActivePopup();
+		togglePopup(popup)
+	} )
+})
 }
 
 export {setPopupEventListeners, togglePopup}
