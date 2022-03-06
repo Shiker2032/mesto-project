@@ -12,21 +12,25 @@ const addButton = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector("[id='popup-card']");
 const cardCloseButton = document.querySelector("[id='card-form-close']");
 const popupImageContainer = document.querySelector("#popup-image-container");
-const ImageContainerCloseBtn = document.querySelector("#popup-image__close-button");
+const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
 const overlay = document.querySelector('#overlay');
-import {togglePopup} from "./utils.js";
+
 import { photoCardsContainer, createCard } from "./card.js";
 
+function togglePopup(popup) {
+	popup.classList.toggle("popup_state_visible");
+	overlay.classList.toggle('overlay_visible');
+}
 
 function findActivePopup () {
 	return document.querySelector(".popup_state_visible");
 }
 
-overlay.addEventListener('click', () => {
+overlay.addEventListener("click", (evt) => {
 	const popup = findActivePopup();
-	togglePopup(popup);
+	if (!evt.target.classList.contains('popup')) togglePopup(popup)
 })
 
 document.addEventListener('keydown', (evt) => {
@@ -57,6 +61,8 @@ function submitCard(event) {
 	photoCardsContainer.prepend(createCard(cardName, cardUrl));	
 }
 
+
+
 function setEventListeners () {
 profileForm.addEventListener("submit", submitForm);
 addCardForm.addEventListener("submit", submitCard);
@@ -64,10 +70,10 @@ editbutton.addEventListener("click", () => togglePopup(popupProfile));
 profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
 addButton.addEventListener("click", () => togglePopup(popupCard));
 cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
-ImageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
+imageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
 editbutton.addEventListener("click", renderForm);
 }
 
 renderForm();
 
-export {setEventListeners}
+export {setEventListeners, togglePopup}

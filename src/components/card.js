@@ -5,8 +5,7 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
 
-
-import { togglePopup } from "./utils.js";
+import {togglePopup} from "../components/modal.js"
 
 function initial() {
 	const initialCards = [
