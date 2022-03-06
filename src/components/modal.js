@@ -22,6 +22,15 @@ import { photoCardsContainer, createCard } from "./card.js";
 function togglePopup(popup) {
 	popup.classList.toggle("popup_state_visible");
 	overlay.classList.toggle('overlay_visible');
+	document.addEventListener('keydown',  closeByEsc)
+}
+
+function closeByEsc(evt) {
+	const popup = findActivePopup(); 
+	if ((evt.key === "Escape") && (popup != null)) { 
+			togglePopup(popup);
+			document.removeEventListener('keydown',  closeByEsc)
+	}
 }
 
 function findActivePopup () {
@@ -32,13 +41,6 @@ overlay.addEventListener("click", (evt) => {
 	const popup = findActivePopup();
 	if (!evt.target.classList.contains('popup')) togglePopup(popup)
 })
-
-document.addEventListener('keydown', (evt) => {
-	const popup = findActivePopup();
-	if ((evt.key === "Escape") && (popup != null)) {
-		togglePopup(popup);
-	}
-});
 
 function renderForm() {
 	newName.value = oldName.textContent;
@@ -60,6 +62,8 @@ function submitCard(event) {
 	addCardForm.reset(); 
 	photoCardsContainer.prepend(createCard(cardName, cardUrl));	
 }
+
+
 
 
 
