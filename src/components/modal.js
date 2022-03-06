@@ -16,6 +16,8 @@ const imageContainerCloseBtn = document.querySelector("#popup-image__close-butto
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
 const overlay = document.querySelector('#overlay');
+const submitCardBtn = addCardForm.querySelector("#submit-card-btn");
+
 
 import { photoCardsContainer, createCard } from "./card.js";
 
@@ -57,15 +59,14 @@ function submitForm(event) {
 function submitCard(event) {
 	const cardUrl = urlInput.value;
 	const cardName = nameInput.value;
-
+	const popup = findActivePopup();
 	event.preventDefault();	
-	addCardForm.reset(); 
+	togglePopup(popup);
+	addCardForm.reset();
+	submitCardBtn.classList.add("form__button_disabled");
+	submitCardBtn.disabled = true;
 	photoCardsContainer.prepend(createCard(cardName, cardUrl));	
 }
-
-
-
-
 
 function setEventListeners () {
 profileForm.addEventListener("submit", submitForm);
