@@ -6,7 +6,7 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
 	
-function createCard(cardName, cardUrl) {
+ function createCard(cardName, cardUrl) {
 	const photoCardEl = photoCardElement.cloneNode(true);
 	const imageElement = photoCardEl.querySelector(".photo-card__image");
 	const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
