@@ -8,10 +8,9 @@
 <body class="body">
 <div class="page">
 	<header class="header">
-		<img alt="Лого" class="header__logo" src="<%=require('..//images/logo.svg')%>">
+		<img alt="Лого" class="header__logo" src="<%=require('../src/images/logo.svg')%>">
 	</header>
-	<main class="content">
-		<div class="overlay" id="overlay"></div>
+	<main class="content">	
 		<div class="popup" id="popup-image-container">
 			<div class="popup-image__content">
 				<button class="button  popup__close-button popup-image__close-button" id="popup-image__close-button" type="button"></button>
@@ -19,7 +18,7 @@
 				<p class="popup-image__title"></p>
 			</div>
 		</div>
-		<div class="popup" id="popup-profile-edit">
+		<div class="popup" id="popup-profile-edit">	
 			<div class="popup__content">
 				<h4 class="popup__heading">Редактировать профиль</h4>
 				<button class="button popup__close-button" id="profile-form-close" type="button"></button>
@@ -36,7 +35,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="popup" id="popup-card">
+		<div class="popup" id="popup-card">	
 			<div class="popup__content">
 				<h4 class="popup__heading">Новое место</h4>
 				<button class="button popup__close-button" id="card-form-close" type="button"></button>
@@ -49,14 +48,14 @@
 						<span class="form__input-error" id="error-card-url-input"></span>
 					</fieldset>
 					<fieldset class="form__handlers">
-						<button class="button form__button" type="submit">Создать</button>
+						<button class="button form__button" id="submit-card-btn" type="submit">Создать</button>
 					</fieldset>
 				</form>
 			</div>
 		</div>
 		<section class="profile">
 			<div class="profile__info">
-				<img alt="Аватар" class="profile__avatar" src="<%=require('../images/Avatar.png')%>">
+				<img alt="Аватар" class="profile__avatar" src="<%=require('../src/images/Avatar.png')%>">
 				<div class="profile__wrapper-info">
 					<div class="profile__title-wrapper">
 						<h3 class="profile__title">Жак-Ив Кусто</h3>
@@ -75,7 +74,7 @@
 			<div class="photo-card__overlay">
 				<img alt="" class="photo-card__image" src="">
 			</div>
-			<img class="button photo-card__delete-button" src="<%=require('../images/trash.svg')%>">
+			<img class="button photo-card__delete-button" src="<%=require('../src/images/trash.svg')%>">
 			<div class="photo-card__description">
 				<h3 class="photo-card__title"></h3>
 				<button class="button photo-card__like-button" type="button"></button>

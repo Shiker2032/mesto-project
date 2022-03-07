@@ -1,46 +1,10 @@
+import {togglePopup} from "../components/modal.js"
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
 const photoCardsContainer = document.querySelector(".photo-cards");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
-
-
-import { togglePopup } from "./utils.js";
-
-function initial() {
-	const initialCards = [
-		{
-			name: 'Архыз',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-		},
-		{
-			name: 'Челябинская область',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-		},
-		{
-			name: 'Иваново',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-		},
-		{
-			name: 'Камчатка',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-		},
-		{
-			name: 'Холмогорский район',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-		},
-		{
-			name: 'Байкал',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-		}
-	];
-	
-	initialCards.forEach((element) => {
-		const photoCardElement =  createCard(element.name, element.link);
-		photoCardsContainer.append(photoCardElement);
-	});
-}
 	
 function createCard(cardName, cardUrl) {
 	const photoCardEl = photoCardElement.cloneNode(true);
@@ -73,4 +37,4 @@ function addCardFunctions(photoCardElement) {
 	});
 }
 
-export {photoCardsContainer, initial, createCard};
+export {photoCardsContainer, createCard};

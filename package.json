@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/Shiker2032/mesto-project#readme",
   "dependencies": {
-    "core-js": "^3.21.1",
-    "webpack": "^5.69.1"
+    "core-js": "^3.21.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -32,6 +31,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
     "postcss-loader": "^6.2.1",
+    "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
   }
