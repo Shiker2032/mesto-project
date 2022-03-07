@@ -11,7 +11,7 @@ function togglePopup(popup) {
 
 	popup.classList.toggle("popup_state_visible");  
 	popup.addEventListener("click", (evt) => {
-		if (!evt.target.classList.contains("popup__content")) togglePopup(popup);
+		if (evt.target.classList.contains("popup")) togglePopup(popup);
 	})
 	document.addEventListener('keydown',  closeByEsc)
 }
@@ -36,4 +36,4 @@ cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 imageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
 }
 
-export {setPopupEventListeners, togglePopup}
+export {setPopupEventListeners, togglePopup, findActivePopup}

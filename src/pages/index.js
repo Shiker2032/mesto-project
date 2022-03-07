@@ -1,6 +1,6 @@
 import {setPopupEventListeners} from "../../src/components/modal"
 import {createCard, photoCardsContainer} from "../../src/components/card.js"
-import { togglePopup } from '../../src/components/modal';
+import { togglePopup, findActivePopup } from '../../src/components/modal';
 import {enableValidation, validationconfig} from '../../src/components/validate.js'
 import "../pages/index.css";
 
@@ -52,10 +52,10 @@ function initial() {
 }
 
 function submitCard(event) {
+	event.preventDefault();
 	const cardUrl = urlInput.value;
 	const cardName = nameInput.value;
-	const popup = findActivePopup();
-	event.preventDefault();	
+	const popup = findActivePopup();	
 	togglePopup(popup);
 	addCardForm.reset();
 	submitCardBtn.classList.add("form__button_disabled");
