@@ -4,6 +4,7 @@ import { createCard, photoCardsContainer } from './card.js';
 const config = {
   urlCards: 'https://nomoreparties.co/v1/plus-cohort7/cards',
   urlProfile: 'https://nomoreparties.co/v1/plus-cohort7/users/me',
+  urlLikes :'https://nomoreparties.co/v1/plus-cohort7/cards/likes',
   token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
 }
 
@@ -75,7 +76,7 @@ function loadProfile () {
     .then (json => {
       console.log(json);
       json.forEach((cardElement) => {
-        const photoCardElement =  createCard(cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id);
+        const photoCardElement =  createCard(cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes);
         
         photoCardsContainer.append(photoCardElement);
       })
@@ -98,9 +99,9 @@ function createCardAPI (cardName, cardUrl) {
   .then(json => console.log(json))  
 }
 
-function deleteCardAPI (event) {
-  const element = event.closest('.photo-card');  
-  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/${element.id}`, {
+function deleteCardAPI (card_id) {
+  console.log(card_id);
+  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/likes/${card_id}`, {
     method: 'DELETE',
     headers: {
       authorization: config.token
@@ -111,16 +112,32 @@ function deleteCardAPI (event) {
   .then (json => console.log(json))
 }
 
-function findCard () {
-  const cardsArray = loadCards();
-  console.log(cardsArray)
- }
+function putLikeAPI (card_id) {
+  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/likes/${card_id}`, {
+    method: 'PUT',
+    headers: {
+      authorization: config.token
+    },    
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
+
+function deleteLikeAPI (card_id) {
+  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/likes/${card_id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: config.token
+    },    
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
 
 loadCards();
 loadProfile();
-findCard();
 
-export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile}
+export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI}
 
 
 
