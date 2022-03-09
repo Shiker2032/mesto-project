@@ -7,29 +7,31 @@ const cardCloseButton = document.querySelector("[id='card-form-close']");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 
-
 function togglePopup(popup) {
 	if (popup.classList.contains('popup_state_visible')){
-		document.removeEventListener('keydown', closeByEsc)
+		document.removeEventListener('keydown', closeByEsc);
+		popup.removeEventListener('click', closeByClick);
 	} else {
 		document.addEventListener('keydown', closeByEsc);
+		popup.addEventListener('click', closeByClick);
 	}
-	popup.classList.toggle("popup_state_visible");  
-	popup.addEventListener("click", (evt) => {
-		if (evt.target.classList.contains("popup")) togglePopup(popup);
-	})
-	
+	popup.classList.toggle("popup_state_visible"); 	
 }
 
 function findActivePopup () {
 	return document.querySelector(".popup_state_visible");
 }
 
-function closeByEsc(evt) {
+function closeByEsc (evt) {
 	const popup = findActivePopup(); 
 	if ((evt.key === "Escape") && (popup != null)) { 
 			togglePopup(popup);		
 	}
+}
+
+function closeByClick (evt) {
+	const popup = findActivePopup();
+	if (evt.target.classList.contains("popup")) togglePopup(popup);
 }
 
 function setPopupEventListeners () {
