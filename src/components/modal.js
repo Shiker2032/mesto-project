@@ -7,13 +7,18 @@ const cardCloseButton = document.querySelector("[id='card-form-close']");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 
-function togglePopup(popup) {
 
+function togglePopup(popup) {
+	if (popup.classList.contains('popup_state_visible')){
+		document.removeEventListener('keydown', closeByEsc)
+	} else {
+		document.addEventListener('keydown', closeByEsc);
+	}
 	popup.classList.toggle("popup_state_visible");  
 	popup.addEventListener("click", (evt) => {
 		if (evt.target.classList.contains("popup")) togglePopup(popup);
 	})
-	document.addEventListener('keydown',  closeByEsc)
+	
 }
 
 function findActivePopup () {
@@ -23,8 +28,7 @@ function findActivePopup () {
 function closeByEsc(evt) {
 	const popup = findActivePopup(); 
 	if ((evt.key === "Escape") && (popup != null)) { 
-			togglePopup(popup);
-			document.removeEventListener('keydown',  closeByEsc)
+			togglePopup(popup);		
 	}
 }
 
