@@ -7,7 +7,7 @@ import "../pages/index.css";
 import "../components/api.js"
 
 const addCardForm = document.forms.card_edit_form;
-const profileForm = document.forms.profile_edit_form;
+ const profileForm = document.forms.profile_edit_form;
 const profile = document.querySelector(".profile");
 const editbutton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector("#popup-profile-edit");
@@ -18,6 +18,7 @@ const newName = profileForm.querySelector("[id='user-name-input']");
 const newActivity = profileForm.querySelector("[id='user-activity-input']");
 export const oldName = profile.querySelector(".profile__title");
 export const oldActivity = profile.querySelector(".profile__subtitle");
+
 
 function initial() {
 	// const initialCards = [

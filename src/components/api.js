@@ -1,5 +1,8 @@
-import {oldName, oldActivity, newName, newActivity} from '../pages/index.js' 
+import {oldName, oldActivity, newName, newActivity, profileForm } from '../pages/index.js' 
 import { createCard, photoCardsContainer } from './card.js'; 
+
+const profileAvatar = document.querySelector('.profile__avatar');
+profileAvatar.addEventListener("mouseenter", ()=> console.log('hover'));
 
 const config = {
   urlCards: 'https://nomoreparties.co/v1/plus-cohort7/cards',
@@ -45,6 +48,8 @@ function loadProfile () {
    .then (json => {
     oldName.textContent = json.name;
     oldActivity.textContent = json.about
+    profileAvatar.src = json.avatar
+
    }); 
   }
 
@@ -133,6 +138,36 @@ function deleteLikeAPI (card_id) {
   .then(res => res.json())
   .then(json => console.log(json))
 }
+
+function changeAvatarAPI (image_url) {
+  fetch('https://nomoreparties.co/v1/plus-cohort7/users/me/avatar ', {
+  method: 'PATCH',
+  headers: {
+    authorization: config.token,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    avatar: `${image_url}`
+  })
+}) 
+  .then(res=> res.json())
+  .then(json => console.log(json))
+
+}
+
+function getUserInfoAPI () {
+  fetch ('https://nomoreparties.co/v1/plus-cohort7/users/me/', {
+    method: 'GET',
+    headers: {
+      authorization: config.token
+    }
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+}
+
+
+getUserInfoAPI ();
 
 loadCards();
 loadProfile();

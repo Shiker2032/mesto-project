@@ -38,7 +38,6 @@ function closeByEsc (evt) {
 
 function closeByClick (evt) {
 	const popup = findActivePopup();
-	console.log(evt.target);
 	if (evt.target.classList.contains('popup')) togglePopup(popup);
 }
 
