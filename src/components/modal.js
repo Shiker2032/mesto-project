@@ -1,4 +1,4 @@
-import { changeAvatarAPI } from "./api.js";
+import { changeAvatarAPI, loadProfile } from "./api.js";
 
 const profileCloseButton = document.querySelector("[id='profile-form-close']");
 const popupProfile = document.querySelector("#popup-profile-edit");
@@ -23,12 +23,8 @@ const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();	
 	changeAvatarAPI (editAvatarUrl.value);
-
-
+	editAvatarBtn.src = editAvatarUrl.value;	
 })
-
-
-
 
 editAvatarBtn.addEventListener('click', () => togglePopup(popupAvatarEdit));
 

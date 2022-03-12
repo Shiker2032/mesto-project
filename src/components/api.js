@@ -53,7 +53,6 @@ function loadProfile () {
     oldName.textContent = json.name;
     oldActivity.textContent = json.about
     profileAvatar.src = json.avatar
-
    }); 
   }
 
