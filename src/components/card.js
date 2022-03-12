@@ -44,7 +44,8 @@ const popupImage = document.querySelector(".popup-image__image");
 function addCardFunctions(photoCardElement) {
 	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
 	deleteButton.addEventListener("click", function () {	
-		deleteCardAPI(photoCardElement.id);		
+		deleteCardAPI(photoCardElement.id);
+		photoCardElement.remove();		
 	})
 	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
 	likeButton.addEventListener("click", function (evt) {
