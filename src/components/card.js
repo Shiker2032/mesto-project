@@ -19,28 +19,32 @@ const popupImage = document.querySelector(".popup-image__image");
 	imageElement.alt = cardObj.name;
 	imageElement.src = cardObj.link;
 	photoCardEl.id = cardObj._id;
-	photoCardEl.owner = cardObj.onwer_id;
+	photoCardEl.owner = cardObj.owner_id;
 	likeCounterElement.textContent = cardObj.likes.length;
 	photoCardEl.addEventListener('click', (evt) => {
-		console.log(cardObj.likes.forEach(like => {
-			if (like._id == my_id) {
-				const photoCardElement = evt.target.closest(".photo-card");			
-				deleteCardAPI (photoCardElement.id);				
+		(cardObj.likes.forEach(like => {
+			if (like._id == my_id) {		
+
 			}
 		}))
 	})
-		
+
 	addCardFunctions(photoCardEl);
 	if (photoCardEl.owner !="a9989f08a11db0ae0dffbcf2") {
 		photoCardEl.querySelector('.photo-card__delete-button').remove();
+	}	
+	if (cardObj.isNew) {
+		photoCardsContainer.prepend(photoCardEl); 		
+	} else {
+		photoCardsContainer.append(photoCardEl); 
 	}
-	photoCardsContainer.append(photoCardEl);  
+	
 }
 
 function addCardFunctions(photoCardElement) {
 	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
-	deleteButton.addEventListener("click", function (event) {
-		deleteCardAPI(event.target);		
+	deleteButton.addEventListener("click", function () {	
+		deleteCardAPI(photoCardElement.id);		
 	})
 	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
 	likeButton.addEventListener("click", function (evt) {
@@ -62,3 +66,6 @@ function addCardFunctions(photoCardElement) {
 }
 
 export {photoCardsContainer, createCard};
+
+
+

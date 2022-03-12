@@ -66,8 +66,7 @@ function submitCard(event) {
 	submitCardBtn.classList.add("form__button_disabled");
 	submitCardBtn.disabled = true;
 
-	createCardAPI(cardName, cardUrl);
-	loadCards();
+	createCardAPI(cardName, cardUrl);	
 }
 
 export function renderForm() {

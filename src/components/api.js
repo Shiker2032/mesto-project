@@ -11,8 +11,20 @@ const config = {
 }
 
 
+class cardClass {
+  constructor (name, link, _id, owner_id, likes, isNew) {
+    this.name = name,
+    this.link = link,
+    this._id = _id,
+    this.owner_id = owner_id,
+    this.likes = likes,
+    this.isNew = isNew
+  }
+}
+
+
 function loadCards () {
-  return fetch (config.urlCards, {
+   fetch (config.urlCards, {
     headers: {
       authorization: config.token,
       'content-type': 'application/JSON'
@@ -20,31 +32,13 @@ function loadCards () {
   })
   .then (respnose => respnose.json())
   .then (json => {
-    console.log(json);     
+    console.log(json); 
     json.forEach((cardElement) => {        
       const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes);
      createCard(cardObj);         
     })
   })
 }
-
-function updateProfile (nameInput, aboutInput) {
-  fetch (config.urlProfile, {
-    method: 'PATCH',
-    headers: {
-      authorization: config.token,
-      'content-type': 'application/JSON'
-    },
-    body: JSON.stringify({
-      name: nameInput,
-      about: aboutInput
-    })
-  })
-  .then(response => response.json())
-  .then(json=>loadProfile());
-  
-}
-
 
 function loadProfile () {
   fetch (config.urlProfile, {
@@ -61,48 +55,51 @@ function loadProfile () {
    }); 
   }
 
-
-
-  class cardClass {
-    constructor (name, link, _id, owner_id, likes) {
-      this.name = name,
-      this.link = link,
-      this._id = _id,
-      this.owner_id = owner_id,
-      this.likes = likes
-    }
-  }
-
-
-
-
-function createCardAPI (cardName, cardUrl) {
-  fetch (config.urlCards, {
-    method: 'POST',
+function updateProfile (nameInput, aboutInput) {
+  fetch (config.urlProfile, {
+    method: 'PATCH',
     headers: {
       authorization: config.token,
       'content-type': 'application/JSON'
     },
     body: JSON.stringify({
-      name: cardName,
-      link: cardUrl,    
+      name: nameInput,
+      about: aboutInput
     })
   })
   .then(response => response.json())
-  .then(json => console.log(json))  
+  .then(json=>loadProfile());  
 }
 
-function deleteCardAPI (card_id) {
-  console.log(card_id);
-  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/likes/${card_id}`, {
-    method: 'DELETE',
+  function createCardAPI (cardName, cardUrl) {
+    fetch (config.urlCards, {
+      method: 'POST',
+      headers: {
+        authorization: config.token,
+        'content-type': 'application/JSON'
+      },
+      body: JSON.stringify({
+        name: cardName,
+        link: cardUrl,    
+      })
+    })
+    .then(response => response.json())
+    .then(cardElement => {
+      const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true);
+      createCard(cardObj);       
+    });    
+  }
+
+function deleteCardAPI (card_id) { 
+  fetch(`https://nomoreparties.co/v1/plus-cohort7/cards/${card_id}` , {
+    method: "DELETE",
     headers: {
       authorization: config.token
-    },
-   
+    },    
   })
-  .then (response => response.json())
-  .then (json => console.log(json))
+  .then (res => res.json())
+  .then (json => console.log(json)); 
+  
 }
 
 function putLikeAPI (card_id) {
@@ -151,24 +148,11 @@ function getUserInfoAPI () {
     }
   })
   .then(res => res.json())
-  .then(json => console.log(json))
 }
 
 
 getUserInfoAPI ();
-
 loadCards();
 loadProfile();
 
 export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI}
-
-
-
-
-
-
-
-
-
-
-
