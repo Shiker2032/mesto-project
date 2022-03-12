@@ -1,6 +1,8 @@
 import {oldName, oldActivity, newName, newActivity, profileForm } from '../pages/index.js' 
 import { createCard} from './card.js'; 
 
+        const my_id = "a9989f08a11db0ae0dffbcf2";
+
 const profileAvatar = document.querySelector('.profile__avatar');
 
 const config = {
@@ -12,16 +14,16 @@ const config = {
 
 
 class cardClass {
-  constructor (name, link, _id, owner_id, likes, isNew) {
+  constructor (name, link, _id, owner_id, likes, isNew, isLiked) {
     this.name = name,
     this.link = link,
     this._id = _id,
     this.owner_id = owner_id,
     this.likes = likes,
-    this.isNew = isNew
+    this.isNew = isNew,
+    this.isLiked = isLiked
   }
 }
-
 
 function loadCards () {
    fetch (config.urlCards, {
@@ -32,9 +34,9 @@ function loadCards () {
   })
   .then (respnose => respnose.json())
   .then (json => {
-    console.log(json); 
-    json.forEach((cardElement) => {        
-      const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes);
+    json.forEach((cardElement) => {  
+      const isLiked = cardElement.likes.some((likeEl) => likeEl._id == my_id);     
+      const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);      
      createCard(cardObj);         
     })
   })
@@ -155,4 +157,4 @@ getUserInfoAPI ();
 loadCards();
 loadProfile();
 
-export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI}
+export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI, deleteLikeAPI}
