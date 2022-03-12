@@ -1,5 +1,5 @@
 import {togglePopup} from "../components/modal.js"
-import { deleteCardAPI, putLikeAPI } from "./api.js";
+import { deleteCardAPI, putLikeAPI, } from "./api.js"; 
 
 const my_id = "a9989f08a11db0ae0dffbcf2";
 
@@ -9,35 +9,32 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
 	
- function createCard(cardName, cardUrl, cardId, ownerId, cardLikes) {
+ function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
 	const imageElement = photoCardEl.querySelector(".photo-card__image");
 	const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
 	const likeCounterElement = photoCardEl.querySelector('.photo-card__like-counter');
 	
-	imageTitleElement.textContent = cardName;
-	imageElement.alt = cardName;
-	imageElement.src = cardUrl;
-	photoCardEl.id = cardId;
-	photoCardEl.owner = ownerId;
-	
-	likeCounterElement.textContent = cardLikes.length;
-
+	imageTitleElement.textContent = cardObj.name;
+	imageElement.alt = cardObj.name;
+	imageElement.src = cardObj.link;
+	photoCardEl.id = cardObj._id;
+	photoCardEl.owner = cardObj.onwer_id;
+	likeCounterElement.textContent = cardObj.likes.length;
 	photoCardEl.addEventListener('click', (evt) => {
-		console.log(cardLikes.forEach(like => {
+		console.log(cardObj.likes.forEach(like => {
 			if (like._id == my_id) {
-				const photoCardElement = evt.target.closest(".photo-card");
-			
-				deleteCardAPI (photoCardElement.id);
+				const photoCardElement = evt.target.closest(".photo-card");			
+				deleteCardAPI (photoCardElement.id);				
 			}
 		}))
 	})
-	
+		
 	addCardFunctions(photoCardEl);
 	if (photoCardEl.owner !="a9989f08a11db0ae0dffbcf2") {
 		photoCardEl.querySelector('.photo-card__delete-button').remove();
 	}
-	return photoCardEl;	
+	photoCardsContainer.append(photoCardEl);  
 }
 
 function addCardFunctions(photoCardElement) {

@@ -1,8 +1,7 @@
 import {oldName, oldActivity, newName, newActivity, profileForm } from '../pages/index.js' 
-import { createCard, photoCardsContainer } from './card.js'; 
+import { createCard} from './card.js'; 
 
 const profileAvatar = document.querySelector('.profile__avatar');
-profileAvatar.addEventListener("mouseenter", ()=> console.log('hover'));
 
 const config = {
   urlCards: 'https://nomoreparties.co/v1/plus-cohort7/cards',
@@ -11,32 +10,25 @@ const config = {
   token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
 }
 
-// fetch('https://nomoreparties.co/v1/plus-cohort7/cards', {
-//   headers: {
-//     authorization: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
-//   }
-// })
-//   .then(res => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   }); 
 
+function loadCards () {
+  return fetch (config.urlCards, {
+    headers: {
+      authorization: config.token,
+      'content-type': 'application/JSON'
+    }
+  })
+  .then (respnose => respnose.json())
+  .then (json => {
+    console.log(json);     
+    json.forEach((cardElement) => {        
+      const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes);
+      const cardEl =  createCard(cardObj);         
+        
+    })
+  })
+}
 
-  // fetch('https://nomoreparties.co/v1/plus-cohort7/users/me', {
-//   method: 'PATCH',
-//   headers: {
-//     authorization: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259',
-//     'content-type': 'application/JSON'
-//   },
-//   body: JSON.stringify({
-//     name: "Влад Бегунов",
-//     about: 'Адепт Веба'
-//   })
-// })
-//   .then(res => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   }); 
 
 function loadProfile () {
   fetch (config.urlProfile, {
@@ -69,24 +61,18 @@ function loadProfile () {
     .then(json => console.log(json))
   }
 
-
-  function loadCards () {
-    return fetch (config.urlCards, {
-      headers: {
-        authorization: config.token,
-        'content-type': 'application/JSON'
-      }
-    })
-    .then (respnose => respnose.json())
-    .then (json => {
-      console.log(json);
-      json.forEach((cardElement) => {
-        const photoCardElement =  createCard(cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes);
-        
-        photoCardsContainer.append(photoCardElement);
-      })
-    })
+  class cardClass {
+    constructor (name, link, _id, owner_id, likes) {
+      this.name = name,
+      this.link = link,
+      this._id = _id,
+      this.owner_id = owner_id,
+      this.likes = likes
+    }
   }
+
+
+
 
 function createCardAPI (cardName, cardUrl) {
   fetch (config.urlCards, {
@@ -172,7 +158,12 @@ getUserInfoAPI ();
 loadCards();
 loadProfile();
 
-export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI}
+export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI}
+
+
+
+
+
 
 
 

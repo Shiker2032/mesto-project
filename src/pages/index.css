@@ -63,3 +63,14 @@
   font-size: 10px;
   text-align: center;
 }
+
+.profile__edit-avatar {
+  position: absolute;  
+  left: 50px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profile__edit-avatar_visible {
+  opacity: 1;
+}

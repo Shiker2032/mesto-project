@@ -40,9 +40,9 @@
 			<div class="popup__content">
 				<h4 class="popup__heading">Обновить аватар</h4>
 				<button class="button popup__close-button" id="avatar-form-close" type="button"></button>
-				<form class="form" name="profile_avatar-edit_form" novalidate>
+				<form class="form" name="profile_avatar_edit_form" novalidate>
 					<fieldset class="form__inputs">
-						<input class="form__input" id="avatar-url-input" name="avatar-url" minlength="2" maxlength="40" placeholder="ссылка" required type="text">
+						<input class="form__input" id="avatar-url-input" name="avatar-url" minlength="2" maxlength="400" placeholder="ссылка" required type="text">
 						<span class="form__input-error" id="error-avatar-url-input"></span>					
 					</fieldset>
 					<fieldset class="form__handlers">
@@ -73,6 +73,7 @@
 		<section class="profile">
 			<div class="profile__info">
 				<img alt="Аватар" class="profile__avatar" src="<%=require('../src/images/Avatar.png')%>">
+				<img alt="" class="profile__edit-avatar" src="<%=require('../src/images/editIcon.svg')%>">
 				<div class="profile__wrapper-info">
 					<div class="profile__title-wrapper">
 						<h3 class="profile__title"></h3>
