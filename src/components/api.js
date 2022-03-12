@@ -23,10 +23,26 @@ function loadCards () {
     console.log(json);     
     json.forEach((cardElement) => {        
       const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes);
-      const cardEl =  createCard(cardObj);         
-        
+     createCard(cardObj);         
     })
   })
+}
+
+function updateProfile (nameInput, aboutInput) {
+  fetch (config.urlProfile, {
+    method: 'PATCH',
+    headers: {
+      authorization: config.token,
+      'content-type': 'application/JSON'
+    },
+    body: JSON.stringify({
+      name: nameInput,
+      about: aboutInput
+    })
+  })
+  .then(response => response.json())
+  .then(json=>loadProfile());
+  
 }
 
 
@@ -45,21 +61,7 @@ function loadProfile () {
    }); 
   }
 
-  function updateProfile (nameInput, aboutInput) {
-    fetch (config.urlProfile, {
-      method: 'PATCH',
-      headers: {
-        authorization: config.token,
-        'content-type': 'application/JSON'
-      },
-      body: JSON.stringify({
-        name: nameInput,
-        about: aboutInput
-      })
-    })
-    .then(response => response.json())
-    .then(json => console.log(json))
-  }
+
 
   class cardClass {
     constructor (name, link, _id, owner_id, likes) {
