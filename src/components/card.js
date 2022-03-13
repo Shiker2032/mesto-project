@@ -6,7 +6,6 @@ const photoCardsContainer = document.querySelector(".photo-cards");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
-const likeButton = photoCardElement.querySelector(".photo-card__like-button");
 
 function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
@@ -40,13 +39,14 @@ function addCardFunctions(photoCardElement) {
 	deleteButton.addEventListener("click", function () {	
 		deleteCardAPI(photoCardElement.id);
 		photoCardElement.remove();		
-	})	
+	});	
 
-	likeButton.addEventListener("click", function (evt) {
+	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
+	likeButton.addEventListener("click",  (evt) => {
 		const photoCardElement = evt.target.closest(".photo-card");
 		const likeCounterElement = photoCardElement.querySelector('.photo-card__like-counter');
 		
-		if (!photoCardElement.isLiked) {
+		if (!photoCardElement.isLiked) {			
 			likeCounterElement.textContent = parseInt(likeCounterElement.textContent) + 1;
 			putLikeAPI(photoCardElement.id);
 			likeButton.classList.toggle("like-button_state_liked");
