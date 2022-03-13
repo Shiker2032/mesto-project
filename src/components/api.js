@@ -160,9 +160,9 @@ function getUserInfoAPI () {
   .then(res => res.json())
 }
 
-
+loadProfile();
 getUserInfoAPI ();
 loadCards();
-loadProfile();
+
 
 export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI, deleteLikeAPI}

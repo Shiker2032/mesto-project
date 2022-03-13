@@ -57,12 +57,13 @@ function addCardFunctions(photoCardElement) {
 			likeCounterElement.textContent = parseInt(likeCounterElement.textContent) + 1;
 				putLikeAPI(photoCardElement.id);		
 		likeButton.classList.toggle("like-button_state_liked");		
+		photoCardElement.isLiked = true;
 		} else {
 			likeCounterElement.textContent = parseInt(likeCounterElement.textContent) - 1;
+			likeButton.classList.toggle("like-button_state_liked");	
 			deleteLikeAPI(photoCardElement.id);
-						
-		}
-		
+			photoCardElement.isLiked = false;						
+		}		
 	})
 
 	const cardPop = photoCardElement.querySelector(".photo-card__image");
