@@ -10,24 +10,28 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 const editAvatarForm = document.forms.profile_avatar_edit_form;
 const popupAvatarEdit = document.querySelector('#popup-avatar-edit');
-const editAvatarBtn = document.querySelector(".profile__avatar");
+const editAvatarIElement = document.querySelector(".profile__avatar");
 const closeAvatarForm = document.querySelector('#avatar-form-close');
-const editAvatarIcon = document.querySelector('.profile__edit-avatar');
+const editAvatarIBtn = document.querySelector('.profile__edit-avatar-button');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
+
+
 
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();	
 	changeAvatarAPI (editAvatarUrl.value);
-	editAvatarBtn.src = editAvatarUrl.value;	
+	editAvatarIElement.src = editAvatarUrl.value;	
 })
 
-editAvatarBtn.addEventListener('click', () => togglePopup(popupAvatarEdit));
+editAvatarIElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
 
-editAvatarBtn.addEventListener('mouseenter', () => {
-	editAvatarIcon.classList.add('profile__edit-avatar_visible');	
+editAvatarIElement.addEventListener('mouseenter', () => {
+	editAvatarIBtn.classList.add('profile__edit-avatar-button_visible');	
+	editAvatarIElement.style.opacity = "0.5";
 })
-editAvatarBtn.addEventListener('mouseleave', () => {
-	editAvatarIcon.classList.remove('profile__edit-avatar_visible');	
+editAvatarIElement.addEventListener('mouseleave', () => {
+	editAvatarIBtn.classList.remove('profile__edit-avatar-button_visible');	
+	editAvatarIElement.style.opacity = "1";	
 })
 
 function togglePopup(popup) {
