@@ -1,0 +1,17 @@
+.profile__edit-avatar-button {
+  position: absolute;  
+  left: 50px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 1000px) {
+  .profile__edit-avatar-button {
+    left: 120px;
+    top: 37px;    
+  }
+}
+
+.profile__edit-avatar-button_visible {
+  opacity: 1;
+}
