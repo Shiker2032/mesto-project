@@ -1,6 +1,5 @@
 import {togglePopup} from "../components/modal.js"
-import { deleteCardAPI, putLikeAPI, deleteLikeAPI, loadProfile } from "./api.js"; 
-
+import { deleteCardAPI, putLikeAPI, deleteLikeAPI} from "./api.js"; 
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
 const photoCardsContainer = document.querySelector(".photo-cards");

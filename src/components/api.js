@@ -1,7 +1,5 @@
-import {oldName, oldActivity, newName, newActivity, profileForm } from '../pages/index.js' 
-import { createCard} from './card.js'; 
-
-const profileAvatar = document.querySelector('.profile__avatar');
+import {loadProfile } from '../pages/index.js' 
+import {createCard} from './card.js';
 
 const config = {
   urlCards: 'https://nomoreparties.co/v1/plus-cohort7/cards',
@@ -10,6 +8,7 @@ const config = {
   token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
 }
 
+const userInfo = [];
 
 class cardClass {
   constructor (name, link, _id, owner_id, likes, isNew, isLiked) {
@@ -28,25 +27,20 @@ class userInfoClass {
     this.user_id = user_id;
   }}
 
-  const userInfo = [];
 
-
-  function loadProfile () {
+  function loadProfileAPI () {
     fetch (config.urlProfile, {
       headers: {
         authorization: config.token
       }
     })
     .then (response => response.json())
-     .then (json => {
-    
+     .then (json => {    
       const user = new userInfoClass(json._id);
       userInfo.push(user);
-      oldName.textContent = json.name;
-      oldActivity.textContent = json.about
-      profileAvatar.src = json.avatar   
+      loadProfile (json);       
      }); 
-    }  
+    }
 
 function loadCards () {
    fetch (config.urlCards, {
@@ -78,7 +72,7 @@ function updateProfile (nameInput, aboutInput) {
     })
   })
   .then(response => response.json())
-  .then(json=>loadProfile());  
+  .then(json=>loadProfileAPI());  
 }
 
   function createCardAPI (cardName, cardUrl) {
@@ -101,7 +95,7 @@ function updateProfile (nameInput, aboutInput) {
   }
 
 function deleteCardAPI (card_id) { 
-  fetch(`https://nomoreparties.co/v1/plus-cohort7/cards/${card_id}` , {
+  fetch(`${config.urlCards}/${card_id}` , {
     method: "DELETE",
     headers: {
       authorization: config.token
@@ -113,7 +107,7 @@ function deleteCardAPI (card_id) {
 }
 
 function putLikeAPI (card_id) {
-  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/likes/${card_id}`, {
+  fetch (`${config.urlLikes}/${card_id}`, {
     method: 'PUT',
     headers: {
       authorization: config.token
@@ -124,7 +118,7 @@ function putLikeAPI (card_id) {
 }
 
 function deleteLikeAPI (card_id) {
-  fetch (`https://nomoreparties.co/v1/plus-cohort7/cards/likes/${card_id}`, {
+  fetch (`${config.urlLikes}/${card_id}`, {
     method: 'DELETE',
     headers: {
       authorization: config.token
@@ -135,7 +129,7 @@ function deleteLikeAPI (card_id) {
 }
 
 function changeAvatarAPI (image_url) {
-  fetch('https://nomoreparties.co/v1/plus-cohort7/users/me/avatar ', {
+  fetch(`${config.urlProfile}/avatar` , {
   method: 'PATCH',
   headers: {
     authorization: config.token,
@@ -147,11 +141,10 @@ function changeAvatarAPI (image_url) {
 }) 
   .then(res=> res.json())
   .then(json => console.log(json))
-
 }
 
 function getUserInfoAPI () {
-  fetch ('https://nomoreparties.co/v1/plus-cohort7/users/me/', {
+  fetch (`${config.urlProfile}/`, {
     method: 'GET',
     headers: {
       authorization: config.token
@@ -160,9 +153,11 @@ function getUserInfoAPI () {
   .then(res => res.json())
 }
 
-loadProfile();
 getUserInfoAPI ();
+
+loadProfileAPI();
 loadCards();
 
 
-export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI, deleteLikeAPI}
+
+export {createCardAPI, deleteCardAPI, loadCards, updateProfile, loadProfile, putLikeAPI, changeAvatarAPI, deleteLikeAPI, loadProfileAPI}

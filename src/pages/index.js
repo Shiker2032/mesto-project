@@ -1,5 +1,4 @@
 import {setPopupEventListeners} from "../../src/components/modal"
-import {createCard, photoCardsContainer} from "../../src/components/card.js"
 import { togglePopup, findActivePopup } from '../../src/components/modal';
 import {enableValidation, validationconfig} from '../../src/components/validate.js'
 
@@ -9,6 +8,7 @@ import "../components/api.js"
 const addCardForm = document.forms.card_edit_form;
  const profileForm = document.forms.profile_edit_form;
 const profile = document.querySelector(".profile");
+const profileAvatar = document.querySelector('.profile__avatar');
 const editbutton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector("#popup-profile-edit");
 const nameInput = addCardForm.querySelector("#card-name-input");
@@ -19,7 +19,13 @@ const newActivity = profileForm.querySelector("[id='user-activity-input']");
 export const oldName = profile.querySelector(".profile__title");
 export const oldActivity = profile.querySelector(".profile__subtitle");
 
-import { createCardAPI, loadCards, updateProfile, loadProfile } from "../components/api.js";
+import { createCardAPI, loadCards, updateProfile, loadProfileAPI } from "../components/api.js";
+
+export function loadProfile (profileObj) {
+	oldName.textContent = profileObj.name;
+	oldActivity.textContent = profileObj.about;
+	profileAvatar.src = profileObj.avatar;
+}
 
 function submitCard(event) {
 	event.preventDefault();
@@ -41,7 +47,7 @@ export function renderForm() {
 function submitForm(event) {
 	event.preventDefault();
 	updateProfile(newName.value, newActivity.value);
-	loadProfile();
+	loadProfileAPI();
 	togglePopup(popupProfile)
 }
 

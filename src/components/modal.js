@@ -1,4 +1,4 @@
-import { changeAvatarAPI, loadProfile } from "./api.js";
+import { changeAvatarAPI} from "./api.js";
 
 const profileCloseButton = document.querySelector("[id='profile-form-close']");
 const popupProfile = document.querySelector("#popup-profile-edit");
