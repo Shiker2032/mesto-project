@@ -1,12 +1,12 @@
+import "../pages/index.css";
+import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
 import { togglePopup, findActivePopup } from '../../src/components/modal';
 import {enableValidation, validationconfig} from '../../src/components/validate.js'
-
-import "../pages/index.css";
-import "../components/api.js"
+import { createCardAPI, updateProfile, loadProfileAPI } from "../components/api.js";
 
 const addCardForm = document.forms.card_edit_form;
- const profileForm = document.forms.profile_edit_form;
+const profileForm = document.forms.profile_edit_form;
 const profile = document.querySelector(".profile");
 const profileAvatar = document.querySelector('.profile__avatar');
 const editbutton = document.querySelector(".profile__edit-button");
@@ -16,12 +16,15 @@ const urlInput = addCardForm.querySelector("#card-url-input");
 const submitCardBtn = addCardForm.querySelector("#submit-card-btn");
 const newName = profileForm.querySelector("[id='user-name-input']");
 const newActivity = profileForm.querySelector("[id='user-activity-input']");
-export const oldName = profile.querySelector(".profile__title");
-export const oldActivity = profile.querySelector(".profile__subtitle");
+const oldName = profile.querySelector(".profile__title");
+const oldActivity = profile.querySelector(".profile__subtitle");
 
-import { createCardAPI, loadCards, updateProfile, loadProfileAPI } from "../components/api.js";
+function renderForm() {
+	newName.value = oldName.textContent;
+	newActivity.value = oldActivity.textContent;    
+}
 
-export function loadProfile (profileObj) {
+function loadProfile (profileObj) {
 	oldName.textContent = profileObj.name;
 	oldActivity.textContent = profileObj.about;
 	profileAvatar.src = profileObj.avatar;
@@ -39,11 +42,6 @@ function submitCard(event) {
 	createCardAPI(cardName, cardUrl);	
 }
 
-export function renderForm() {
-	newName.value = oldName.textContent;
-	newActivity.value = oldActivity.textContent;    
-}
-
 function submitForm(event) {
 	event.preventDefault();
 	updateProfile(newName.value, newActivity.value);
@@ -55,8 +53,8 @@ addCardForm.addEventListener("submit", submitCard);
 editbutton.addEventListener("click", renderForm);
 profileForm.addEventListener("submit", submitForm);
 
-
 setPopupEventListeners();
 renderForm();
 enableValidation(validationconfig);
-//-----------------------------------------------------------------------------------------API-------------------------------------------------------------------------
+
+export {loadProfile}

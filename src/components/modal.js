@@ -8,14 +8,11 @@ const popupCard = document.querySelector("[id='popup-card']");
 const cardCloseButton = document.querySelector("[id='card-form-close']");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
-
 const editAvatarForm = document.forms.profile_avatar_edit_form;
-
 const popupAvatarEdit = document.querySelector('#popup-avatar-edit');
 const editAvatarBtn = document.querySelector(".profile__avatar");
 const closeAvatarForm = document.querySelector('#avatar-form-close');
 const editAvatarIcon = document.querySelector('.profile__edit-avatar');
-
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 
 editAvatarForm.addEventListener('submit', (evt) => {
@@ -67,7 +64,6 @@ function setPopupEventListeners () {
 	cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
 	imageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
 	closeAvatarForm.addEventListener("click", () => togglePopup(popupAvatarEdit));
-
-	}
+}
 
 export {setPopupEventListeners, togglePopup, findActivePopup}
