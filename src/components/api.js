@@ -1,8 +1,6 @@
 import {oldName, oldActivity, newName, newActivity, profileForm } from '../pages/index.js' 
 import { createCard} from './card.js'; 
 
-        const my_id = "a9989f08a11db0ae0dffbcf2";
-
 const profileAvatar = document.querySelector('.profile__avatar');
 
 const config = {
@@ -25,6 +23,31 @@ class cardClass {
   }
 }
 
+class userInfoClass {
+  constructor (user_id) {
+    this.user_id = user_id;
+  }}
+
+  const userInfo = [];
+
+
+  function loadProfile () {
+    fetch (config.urlProfile, {
+      headers: {
+        authorization: config.token
+      }
+    })
+    .then (response => response.json())
+     .then (json => {
+    
+      const user = new userInfoClass(json._id);
+      userInfo.push(user);
+      oldName.textContent = json.name;
+      oldActivity.textContent = json.about
+      profileAvatar.src = json.avatar   
+     }); 
+    }  
+
 function loadCards () {
    fetch (config.urlCards, {
     headers: {
@@ -35,26 +58,12 @@ function loadCards () {
   .then (respnose => respnose.json())
   .then (json => {
     json.forEach((cardElement) => {  
-      const isLiked = cardElement.likes.some((likeEl) => likeEl._id == my_id);     
+      const isLiked = cardElement.likes.some((likeEl) => likeEl._id == userInfo[0].user_id);      
       const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);      
      createCard(cardObj);         
     })
   })
 }
-
-function loadProfile () {
-  fetch (config.urlProfile, {
-    headers: {
-      authorization: config.token
-    }
-  })
-  .then (response => response.json())
-   .then (json => {
-    oldName.textContent = json.name;
-    oldActivity.textContent = json.about
-    profileAvatar.src = json.avatar
-   }); 
-  }
 
 function updateProfile (nameInput, aboutInput) {
   fetch (config.urlProfile, {

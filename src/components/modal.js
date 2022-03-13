@@ -18,8 +18,6 @@ const editAvatarIcon = document.querySelector('.profile__edit-avatar');
 
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 
-
-
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();	
 	changeAvatarAPI (editAvatarUrl.value);
