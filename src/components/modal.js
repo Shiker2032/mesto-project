@@ -1,3 +1,4 @@
+
 import { changeAvatarAPI} from "./api.js";
 
 const profileCloseButton = document.querySelector("[id='profile-form-close']");
@@ -16,9 +17,13 @@ const editAvatarIBtn = document.querySelector('.profile__edit-avatar-button');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 
 editAvatarForm.addEventListener('submit', (evt) => {
+	const popup = findActivePopup();
+
 	evt.preventDefault();	
 	changeAvatarAPI (editAvatarUrl.value);
-	editAvatarIElement.src = editAvatarUrl.value;	
+	editAvatarIElement.src = editAvatarUrl.value;		
+	editAvatarForm.reset();
+	togglePopup(popup);	
 })
 
 editAvatarIElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
