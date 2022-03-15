@@ -46,14 +46,14 @@ function addCardFunctions(photoCardElement) {
 		const likeCounterElement = photoCardElement.querySelector('.photo-card__like-counter');
 		
 		if (!photoCardElement.isLiked) {			
-			putLikeAPI(photoCardElement.id).then(() => {
-				likeCounterElement.textContent = parseInt(likeCounterElement.textContent) + 1;
-				likeButton.classList.toggle("like-button_state_liked");
-				photoCardElement.isLiked = true;
+			putLikeAPI(photoCardElement.id).then((res) => {							
+					likeCounterElement.textContent = res.likes.length;
+					likeButton.classList.toggle("like-button_state_liked");
+					photoCardElement.isLiked = true;				
 			})
 		} else {
-			deleteLikeAPI(photoCardElement.id).then(() => {
-				likeCounterElement.textContent = parseInt(likeCounterElement.textContent) - 1;
+			deleteLikeAPI(photoCardElement.id).then((res) => {
+				likeCounterElement.textContent = res.likes.length
 				likeButton.classList.toggle("like-button_state_liked");					
 				photoCardElement.isLiked = false;						
 			})
