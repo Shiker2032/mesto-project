@@ -14,6 +14,7 @@ function getUserDataAPI () {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
   })
+  .catch((error) => console.log(error))
 }
 
 function updateProfileAPI (nameInput, aboutInput) {
@@ -32,6 +33,7 @@ function updateProfileAPI (nameInput, aboutInput) {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
   })
+  .catch((error) => console.log(error))
 }
 
 function loadCardsAPI () {
@@ -63,6 +65,7 @@ function createCardAPI (cardName, cardUrl) {
    if (res.ok) return res.json();
    return Promise.reject(`Reject: ${res.status}`);
  })
+ .catch((error) => console.log(error))
 }
 
 function deleteCardAPI (card_id) { 
@@ -77,7 +80,7 @@ function deleteCardAPI (card_id) {
     return Promise.reject(`Reject: ${res.status}`);
   })
   .then (json => console.log(json))
-  .catch((err) => console.log(err))
+  .catch((error) => console.log(error))
 }
 
 function putLikeAPI (card_id) {
@@ -91,6 +94,7 @@ function putLikeAPI (card_id) {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
   })  
+  .catch((error) => console.log(error))
 }
 
 function deleteLikeAPI (card_id) {
@@ -104,6 +108,7 @@ function deleteLikeAPI (card_id) {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
   })  
+  .catch((error) => console.log(error))
 }
 
 function changeAvatarAPI (image_url) {
@@ -121,6 +126,7 @@ function changeAvatarAPI (image_url) {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
   })
+  .catch((error) => console.log(error))
 }
 
 export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, getUserDataAPI}
