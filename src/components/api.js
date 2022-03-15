@@ -4,18 +4,17 @@ const config = {
   urlLikes :'https://nomoreparties.co/v1/plus-cohort7/cards/likes',
   token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
 }
-
-  function getUserDataAPI () {
-    return fetch (config.urlProfile, {
-      headers: {
-        authorization: config.token
-      }
-    })
-    .then (res => {
-      if (res.ok) return res.json();
-      return Promise.reject(`Reject: ${res.status}`);
-    })
-  }
+function getUserDataAPI () {
+  return fetch (config.urlProfile, {
+    headers: {
+      authorization: config.token
+    }
+  })
+  .then (res => {
+    if (res.ok) return res.json();
+    return Promise.reject(`Reject: ${res.status}`);
+  })
+}
 
 function updateProfileAPI (nameInput, aboutInput) {
   return fetch (config.urlProfile, {
@@ -109,19 +108,19 @@ function deleteLikeAPI (card_id) {
 
 function changeAvatarAPI (image_url) {
   return fetch(`${config.urlProfile}/avatar` , {
-  method: 'PATCH',
-  headers: {
-    authorization: config.token,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    avatar: `${image_url}`
+    method: 'PATCH',
+    headers: {
+      authorization: config.token,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      avatar: `${image_url}`
+    })
   })
-})
-.then(res=> {
-  if (res.ok) return res.json();
-  return Promise.reject(`Reject: ${res.status}`);
-})
+  .then(res=> {
+    if (res.ok) return res.json();
+    return Promise.reject(`Reject: ${res.status}`);
+  })
 }
 
 export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, getUserDataAPI}
