@@ -5,7 +5,7 @@ const config = {
   token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
 }
 
-  function loadProfileAPI () {
+  function getUserDataAPI () {
     return fetch (config.urlProfile, {
       headers: {
         authorization: config.token
@@ -124,4 +124,4 @@ function changeAvatarAPI (image_url) {
 })
 }
 
-export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, loadProfileAPI}
+export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, getUserDataAPI}

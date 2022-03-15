@@ -1,5 +1,5 @@
 import {togglePopup} from "../components/modal.js"
-import { deleteCardAPI, putLikeAPI, deleteLikeAPI, loadProfileAPI} from "./api.js"; 
+import { deleteCardAPI, putLikeAPI, deleteLikeAPI, getUserDataAPI} from "./api.js"; 
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
 const photoCardsContainer = document.querySelector(".photo-cards");
@@ -25,7 +25,7 @@ function createCard(cardObj) {
 	
 	if (cardObj.isLiked) likeButton.classList.toggle("like-button_state_liked");
 	addCardFunctions(photoCardEl);
-	loadProfileAPI().then((res) => {
+	getUserDataAPI().then((res) => {
 		if (photoCardEl.owner !=res._id) {
 			photoCardEl.querySelector('.photo-card__delete-button').remove();
 		}

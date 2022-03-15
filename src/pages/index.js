@@ -3,8 +3,9 @@ import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
 import { togglePopup, popupCard } from '../../src/components/modal';
 import {enableValidation, validationConfig} from '../../src/components/validate.js'
-import { createCardAPI, updateProfileAPI, loadProfileAPI, loadCardsAPI } from "../components/api.js";
+import { createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI } from "../components/api.js";
 import {createCard} from '../../src/components/card.js';
+
 
 const addCardForm = document.forms.card_edit_form;
 const profileForm = document.forms.profile_edit_form;
@@ -79,18 +80,41 @@ editbutton.addEventListener("click", setProfileData);
 profileForm.addEventListener("submit", submitProfile);
 
 
-loadProfileAPI()
-.then(profileData => {
-	DrawProfile (profileData); 	 
-	const user = new userInfoClass(profileData._id);
-	userInfo.push(user);    
+// loadProfileAPI()
+// .then(profileData => {
+// 	DrawProfile (profileData); 	 
+// 	const user = new userInfoClass(profileData._id);
+// 	userInfo.push(user);    
+// })
+// .then(loadCardsAPI)
+// .then(cardData => {
+// 	cardData.forEach((cardElement) => {  
+// 		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == userInfo[0].user_id);      
+// 		const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);      
+// 	 createCard(cardObj);
+// 	})
+// })
+
+
+
+
+Promise.all([
+	getUserDataAPI(),
+	loadCardsAPI()
+])
+.then((values) => {
+	const data = {
+		userData : values[0],
+		cardsData : values[1]		
+	}
+	return data
 })
-.then(loadCardsAPI)
-.then(cardData => {
-	cardData.forEach((cardElement) => {  
-		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == userInfo[0].user_id);      
-		const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);      
-	 createCard(cardObj);
+.then((ServerData) => {
+	DrawProfile(ServerData.userData);
+	ServerData.cardsData.forEach((cardElement) => {
+		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == ServerData.userData._id);
+		const cardObj = new cardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);
+		createCard(cardObj);
 	})
 })
 
