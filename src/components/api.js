@@ -82,7 +82,7 @@ function deleteCardAPI (card_id) {
 }
 
 function putLikeAPI (card_id) {
-  fetch (`${config.urlLikes}/${card_id}`, {
+  return fetch (`${config.urlLikes}/${card_id}`, {
     method: 'PUT',
     headers: {
       authorization: config.token
@@ -93,11 +93,10 @@ function putLikeAPI (card_id) {
     return Promise.reject(`Reject: ${res.status}`);
   })
   .then(json => console.log(json))
-  .catch((err) => console.log(err));
 }
 
 function deleteLikeAPI (card_id) {
-  fetch (`${config.urlLikes}/${card_id}`, {
+  return fetch (`${config.urlLikes}/${card_id}`, {
     method: 'DELETE',
     headers: {
       authorization: config.token
@@ -107,8 +106,7 @@ function deleteLikeAPI (card_id) {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
   })
-  .then(json => console.log(json))
-  .catch((err) => console.log(err));
+  .then(json => console.log(json)) 
 }
 
 function changeAvatarAPI (image_url) {
