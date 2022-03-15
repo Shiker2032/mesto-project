@@ -6,6 +6,7 @@ const photoCardsContainer = document.querySelector(".photo-cards");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
+const cardImage = photoCardElement.querySelector(".photo-card__image");
 
 function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
@@ -41,8 +42,7 @@ function addCardFunctions(photoCardElement) {
 	});	
 
 	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
-	likeButton.addEventListener("click",  (evt) => {
-		const photoCardElement = evt.target.closest(".photo-card");
+	likeButton.addEventListener("click",  (evt) => {	
 		const likeCounterElement = photoCardElement.querySelector('.photo-card__like-counter');
 		
 		if (!photoCardElement.isLiked) {			
@@ -60,10 +60,7 @@ function addCardFunctions(photoCardElement) {
 		}		
 	})
 
-	const cardPop = photoCardElement.querySelector(".photo-card__image");
-	
-	cardPop.classList.add("button");
-	cardPop.addEventListener("click", function (event) {
+	cardImage.addEventListener("click", function (event) {
 		const card = event.target;
 		popupImage.src = card.src;
 		popupImageTitle.textContent = card.alt;

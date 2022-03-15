@@ -15,8 +15,6 @@ const closeAvatarForm = document.querySelector('#avatar-form-close');
 const editAvatarBtn = document.querySelector('.profile__edit-avatar-button');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 
-
-
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();
 	changeAvatarAPI(editAvatarUrl.value).then(() => {

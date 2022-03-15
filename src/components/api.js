@@ -91,8 +91,7 @@ function putLikeAPI (card_id) {
   .then(res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .then(json => console.log(json))
+  })  
 }
 
 function deleteLikeAPI (card_id) {
@@ -105,8 +104,7 @@ function deleteLikeAPI (card_id) {
   .then(res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .then(json => console.log(json)) 
+  })  
 }
 
 function changeAvatarAPI (image_url) {
