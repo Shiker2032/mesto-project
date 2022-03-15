@@ -37,23 +37,22 @@ editAvatarElement.addEventListener('mouseleave', () => {
 
 function togglePopup(popup) {
 	if (popup.classList.contains('popup_state_visible')){
-		closePopup (popup);
+		closePopup (popup);		
 	} else {
-		openPopup (popup);
+		openPopup (popup);		
 	}
-	popup.classList.toggle("popup_state_visible"); 	
 }
 
 function openPopup (popup) {
 	document.addEventListener('keydown', closeByEsc);
 	popup.addEventListener('click', closeByClick);
-	popup.classList.remove('popup_state_visible');
+	popup.classList.add('popup_state_visible');
 }
 
 function closePopup (popup) {
 	document.removeEventListener('keydown', closeByEsc);
 	popup.removeEventListener('click', closeByClick);
-	popup.classList.add('popup_state_visible');
+	popup.classList.remove('popup_state_visible');
 }
 
 function findActivePopup () {
