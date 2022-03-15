@@ -110,7 +110,7 @@ function deleteLikeAPI (card_id) {
 }
 
 function changeAvatarAPI (image_url) {
-  fetch(`${config.urlProfile}/avatar` , {
+  return fetch(`${config.urlProfile}/avatar` , {
   method: 'PATCH',
   headers: {
     authorization: config.token,
@@ -124,11 +124,6 @@ function changeAvatarAPI (image_url) {
   if (res.ok) return res.json();
   return Promise.reject(`Reject: ${res.status}`);
 })
-.then(json => console.log(json))
-.catch((err) => console.log(err));
 }
-
-loadProfileAPI();
-loadCardsAPI();
 
 export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, loadProfileAPI}

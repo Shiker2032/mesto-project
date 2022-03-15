@@ -19,8 +19,9 @@ const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();	
-	changeAvatarAPI (editAvatarUrl.value);
-	editAvatarIElement.src = editAvatarUrl.value;	
+	changeAvatarAPI (editAvatarUrl.value).then(() => {
+		editAvatarIElement.src = editAvatarUrl.value;	
+	})
 })
 
 editAvatarIElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
