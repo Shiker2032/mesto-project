@@ -77,4 +77,4 @@ export function enableValidation (config) {
 	});
 };
 
-export {validationConfig}
+export {validationConfig, disableButton}

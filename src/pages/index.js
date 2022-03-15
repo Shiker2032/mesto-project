@@ -73,6 +73,10 @@ addCardForm.addEventListener("submit", submitCard);
 editbutton.addEventListener("click", setProfileData);
 profileForm.addEventListener("submit", submitProfile);
 
+setPopupEventListeners();
+setProfileData();
+enableValidation(validationConfig);
+
 Promise.all([
 	getUserDataAPI(),
 	loadCardsAPI()
@@ -92,7 +96,3 @@ Promise.all([
 		createCard(cardObj);
 	})
 })
-
-setPopupEventListeners();
-setProfileData();
-enableValidation(validationConfig);

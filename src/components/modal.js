@@ -1,4 +1,5 @@
 import { changeAvatarAPI} from "./api.js";
+import { disableButton } from "./validate.js";
 
 const profileCloseButton = document.querySelector("[id='profile-form-close']");
 const popupProfile = document.querySelector("#popup-profile-edit");
@@ -13,12 +14,16 @@ const popupAvatarEdit = document.querySelector('#popup-avatar-edit');
 const editAvatarElement = document.querySelector(".profile__avatar");
 const closeAvatarForm = document.querySelector('#avatar-form-close');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
+const submitAvatarBtn = editAvatarForm.querySelector('#submit-avatar-btn');
 
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();
+
 	changeAvatarAPI(editAvatarUrl.value).then(() => {
 		editAvatarElement.src = editAvatarUrl.value
 		editAvatarForm.reset();
+		submitAvatarBtn.disabled = true;
+		submitAvatarBtn.classList.add('form__button_disabled');
 		togglePopup(popupAvatarEdit);
 	})			
 })
