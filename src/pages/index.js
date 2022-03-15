@@ -2,7 +2,7 @@ import "../pages/index.css";
 import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
 import { togglePopup, popupCard } from '../../src/components/modal';
-import {enableValidation, validationconfig} from '../../src/components/validate.js'
+import {enableValidation, validationConfig} from '../../src/components/validate.js'
 import { createCardAPI, updateProfileAPI, loadProfileAPI, loadCardsAPI } from "../components/api.js";
 import {createCard} from '../../src/components/card.js';
 
@@ -94,11 +94,6 @@ loadProfileAPI()
 	})
 })
 
-
 setPopupEventListeners();
 setProfileData();
-enableValidation(validationconfig);
-
-
-
-
+enableValidation(validationConfig);
