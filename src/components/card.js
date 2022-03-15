@@ -6,7 +6,7 @@ const photoCardsContainer = document.querySelector(".photo-cards");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
-const cardImage = photoCardElement.querySelector(".photo-card__image");
+
 
 function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
@@ -14,6 +14,7 @@ function createCard(cardObj) {
 	const imageElement = photoCardEl.querySelector(".photo-card__image");
 	const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
 	const likeCounterElement = photoCardEl.querySelector('.photo-card__like-counter');
+	
 
 	imageTitleElement.textContent = cardObj.name;
 	imageElement.alt = cardObj.name;
@@ -38,15 +39,17 @@ function createCard(cardObj) {
 }
 
 function addCardFunctions(photoCardElement) {
+	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
 	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
+	const cardImage = photoCardElement.querySelector(".photo-card__image");
+
 	deleteButton.addEventListener("click", function () {	
 		deleteCardAPI(photoCardElement.id).then(() => photoCardElement.remove())				
-	});	
+	});
 
-	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
 	likeButton.addEventListener("click",  (evt) => {	
 		const likeCounterElement = photoCardElement.querySelector('.photo-card__like-counter');
-		
+
 		if (!photoCardElement.isLiked) {			
 			putLikeAPI(photoCardElement.id).then((res) => {							
 					likeCounterElement.textContent = res.likes.length;
@@ -61,7 +64,7 @@ function addCardFunctions(photoCardElement) {
 			})
 		}		
 	})
-
+		
 	cardImage.addEventListener("click", function (event) {
 		const card = event.target;
 		popupImage.src = card.src;
@@ -69,6 +72,7 @@ function addCardFunctions(photoCardElement) {
 		popupImage.alt = card.alt;
 		togglePopup(popupImageContainer);
 	});
+	
 }
 
 export {photoCardsContainer, createCard};
