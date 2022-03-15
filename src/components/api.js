@@ -47,6 +47,7 @@ function loadCardsAPI () {
    if (res.ok) return res.json();
    return Promise.reject(`Reject: ${res.status}`);
  }) 
+ .catch((error) => console.log(error))
 }
 
 function createCardAPI (cardName, cardUrl) {
@@ -78,8 +79,7 @@ function deleteCardAPI (card_id) {
   .then (res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .then (json => console.log(json))
+  })  
   .catch((error) => console.log(error))
 }
 
