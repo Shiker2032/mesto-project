@@ -67,7 +67,7 @@ function createCardAPI (cardName, cardUrl) {
 }
 
 function deleteCardAPI (card_id) { 
-  fetch(`${config.urlCards}/${card_id}` , {
+ return fetch(`${config.urlCards}/${card_id}` , {
     method: "DELETE",
     headers: {
       authorization: config.token

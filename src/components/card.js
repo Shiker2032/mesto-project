@@ -37,8 +37,8 @@ function createCard(cardObj) {
 function addCardFunctions(photoCardElement) {
 	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");
 	deleteButton.addEventListener("click", function () {	
-		deleteCardAPI(photoCardElement.id);
-		photoCardElement.remove();		
+		deleteCardAPI(photoCardElement.id).then(() => photoCardElement.remove())
+				
 	});	
 
 	const likeButton = photoCardElement.querySelector(".photo-card__like-button");
