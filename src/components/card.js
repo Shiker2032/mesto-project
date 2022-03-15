@@ -1,5 +1,5 @@
 import {togglePopup} from "../components/modal.js"
-import { deleteCardAPI, putLikeAPI, deleteLikeAPI} from "./api.js"; 
+import { deleteCardAPI, putLikeAPI, deleteLikeAPI, loadProfileAPI} from "./api.js"; 
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
 const photoCardsContainer = document.querySelector(".photo-cards");
@@ -14,25 +14,27 @@ function createCard(cardObj) {
 	const imageElement = photoCardEl.querySelector(".photo-card__image");
 	const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
 	const likeCounterElement = photoCardEl.querySelector('.photo-card__like-counter');
-	
+
 	imageTitleElement.textContent = cardObj.name;
 	imageElement.alt = cardObj.name;
 	imageElement.src = cardObj.link;
 	photoCardEl.id = cardObj._id;
 	photoCardEl.owner = cardObj.owner_id;
-	likeCounterElement.textContent = cardObj.likes.length;	
+	likeCounterElement.textContent = cardObj.likes.length;
 	photoCardEl.isLiked = cardObj.isLiked;
-
+	
 	if (cardObj.isLiked) likeButton.classList.toggle("like-button_state_liked");
 	addCardFunctions(photoCardEl);
-	if (photoCardEl.owner !="a9989f08a11db0ae0dffbcf2") {
-		photoCardEl.querySelector('.photo-card__delete-button').remove();
-	}	
-	if (cardObj.isNew) {
-		photoCardsContainer.prepend(photoCardEl); 		
-	} else {
-		photoCardsContainer.append(photoCardEl); 
-	}	
+	loadProfileAPI().then((res) => {
+		if (photoCardEl.owner !=res._id) {
+			photoCardEl.querySelector('.photo-card__delete-button').remove();
+		}
+		if (cardObj.isNew) {
+			photoCardsContainer.prepend(photoCardEl);
+		} else {
+			photoCardsContainer.append(photoCardEl);
+		}
+	})
 }
 
 function addCardFunctions(photoCardElement) {
