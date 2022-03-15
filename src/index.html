@@ -41,7 +41,7 @@
 				<button class="button popup__close-button" id="avatar-form-close" type="button"></button>
 				<form class="form" name="profile_avatar_edit_form" novalidate>
 					<fieldset class="form__inputs">
-						<input class="form__input" id="avatar-url-input" name="avatar-url" minlength="2" maxlength="400" placeholder="ссылка" required type="text">
+						<input class="form__input" id="avatar-url-input" name="avatar-url" placeholder="ссылка" type="url" required >
 						<span class="form__input-error" id="error-avatar-url-input"></span>					
 					</fieldset>
 					<fieldset class="form__handlers">
@@ -58,8 +58,7 @@
 					<fieldset class="form__inputs">
 						<input class="form__input" id="card-name-input" name="card-name" minlength="2" maxlength="30"  placeholder="Название" required type="text">
 						<span class="form__input-error" id="error-card-name-input"></span>
-						<input class="form__input" id="card-url-input" name="card-url"  placeholder="Ссылка на картинку" required type="text"
-						pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+						<input class="form__input" id="card-url-input" name="card-url"  placeholder="Ссылка на картинку" type="url" required>
 						<span class="form__input-error" id="error-card-url-input"></span>
 					</fieldset>
 					<fieldset class="form__handlers">
