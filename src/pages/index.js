@@ -6,7 +6,6 @@ import {enableValidation, validationConfig} from '../../src/components/validate.
 import { createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI } from "../components/api.js";
 import {createCard} from '../../src/components/card.js';
 
-
 const addCardForm = document.forms.card_edit_form;
 const profileForm = document.forms.profile_edit_form;
 const profile = document.querySelector(".profile");
@@ -53,7 +52,7 @@ function submitCard(event) {
 	.then(cardElement => {
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true, false);
 		createCard(cardObj);
-				
+
 		togglePopup(popupCard);
 		addCardForm.reset();
 		submitCardBtn.classList.add("form__button_disabled");
