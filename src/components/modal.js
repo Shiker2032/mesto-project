@@ -71,4 +71,4 @@ function setPopupEventListeners () {
 	closeAvatarForm.addEventListener("click", () => togglePopup(popupAvatarEdit));
 }
 
-export {setPopupEventListeners, togglePopup, findActivePopup}
+export {setPopupEventListeners, togglePopup, findActivePopup, popupCard}

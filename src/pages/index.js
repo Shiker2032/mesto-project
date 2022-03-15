@@ -1,7 +1,7 @@
 import "../pages/index.css";
 import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
-import { togglePopup, findActivePopup } from '../../src/components/modal';
+import { togglePopup, popupCard } from '../../src/components/modal';
 import {enableValidation, validationconfig} from '../../src/components/validate.js'
 import { createCardAPI, updateProfileAPI, loadProfileAPI, loadCardsAPI } from "../components/api.js";
 import {createCard} from '../../src/components/card.js';
@@ -39,7 +39,7 @@ class userInfoClass {
 
 	const userInfo = [];
 
-function renderForm() {
+function setProfileData() {
 	newName.value = oldName.textContent;
 	newActivity.value = oldActivity.textContent;    
 }
@@ -54,8 +54,7 @@ function submitCard(event) {
 	event.preventDefault();
 	const cardUrl = urlInput.value;
 	const cardName = nameInput.value;
-	const popup = findActivePopup();	
-	togglePopup(popup);
+	togglePopup(popupCard);
 	addCardForm.reset();
 	submitCardBtn.classList.add("form__button_disabled");
 	submitCardBtn.disabled = true;
@@ -66,7 +65,7 @@ function submitCard(event) {
 	})
 }
 
-function submitForm(event) {
+function submitProfile(event) {
 	event.preventDefault();
 	updateProfileAPI(newName.value, newActivity.value)
 	.then(profileData => {
@@ -76,8 +75,8 @@ function submitForm(event) {
 }
 
 addCardForm.addEventListener("submit", submitCard);
-editbutton.addEventListener("click", renderForm);
-profileForm.addEventListener("submit", submitForm);
+editbutton.addEventListener("click", setProfileData);
+profileForm.addEventListener("submit", submitProfile);
 
 
 loadProfileAPI()
@@ -97,7 +96,7 @@ loadProfileAPI()
 
 
 setPopupEventListeners();
-renderForm();
+setProfileData();
 enableValidation(validationconfig);
 
 
