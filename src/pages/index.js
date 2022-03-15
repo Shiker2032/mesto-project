@@ -1,9 +1,10 @@
 import "../pages/index.css";
 import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
-import { togglePopup, findActivePopup } from '../../src/components/modal';
-import {enableValidation, validationconfig} from '../../src/components/validate.js'
-import { createCardAPI, updateProfile, loadProfileAPI } from "../components/api.js";
+import { togglePopup, popupCard } from '../../src/components/modal';
+import {enableValidation, validationConfig} from '../../src/components/validate.js'
+import { createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI } from "../components/api.js";
+import {createCard} from '../../src/components/card.js';
 
 const addCardForm = document.forms.card_edit_form;
 const profileForm = document.forms.profile_edit_form;
@@ -19,12 +20,24 @@ const newActivity = profileForm.querySelector("[id='user-activity-input']");
 const oldName = profile.querySelector(".profile__title");
 const oldActivity = profile.querySelector(".profile__subtitle");
 
-function renderForm() {
+class CardClass {
+	constructor (name, link, _id, owner_id, likes, isNew, isLiked) {
+		this.name = name,
+		this.link = link,
+		this._id = _id,
+		this.owner_id = owner_id,
+		this.likes = likes,
+		this.isNew = isNew,
+		this.isLiked = isLiked
+	}
+}
+
+function setProfileData() {
 	newName.value = oldName.textContent;
 	newActivity.value = oldActivity.textContent;    
 }
 
-function loadProfile (profileObj) {
+function DrawProfile (profileObj) {
 	oldName.textContent = profileObj.name;
 	oldActivity.textContent = profileObj.about;
 	profileAvatar.src = profileObj.avatar;
@@ -34,27 +47,52 @@ function submitCard(event) {
 	event.preventDefault();
 	const cardUrl = urlInput.value;
 	const cardName = nameInput.value;
-	const popup = findActivePopup();	
-	togglePopup(popup);
-	addCardForm.reset();
-	submitCardBtn.classList.add("form__button_disabled");
-	submitCardBtn.disabled = true;
-	createCardAPI(cardName, cardUrl);	
+
+	createCardAPI(cardName, cardUrl)
+	.then(cardElement => {
+		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true, false);
+		createCard(cardObj);
+
+		togglePopup(popupCard);
+		addCardForm.reset();
+		submitCardBtn.classList.add("form__button_disabled");
+		submitCardBtn.disabled = true;
+	})
 }
 
-function submitForm(event) {
+function submitProfile(event) {
 	event.preventDefault();
-	updateProfile(newName.value, newActivity.value);
-	loadProfileAPI();
-	togglePopup(popupProfile)
+	updateProfileAPI(newName.value, newActivity.value)
+	.then(profileData => {
+		DrawProfile(profileData);
+		togglePopup(popupProfile);
+	})
 }
 
 addCardForm.addEventListener("submit", submitCard);
-editbutton.addEventListener("click", renderForm);
-profileForm.addEventListener("submit", submitForm);
+editbutton.addEventListener("click", setProfileData);
+profileForm.addEventListener("submit", submitProfile);
 
 setPopupEventListeners();
-renderForm();
-enableValidation(validationconfig);
+setProfileData();
+enableValidation(validationConfig);
 
-export {loadProfile}
+Promise.all([
+	getUserDataAPI(),
+	loadCardsAPI()
+])
+.then((values) => {
+	const data = {
+		userData : values[0],
+		cardsData : values[1]		
+	}
+	return data
+})
+.then((ServerData) => {
+	DrawProfile(ServerData.userData);
+	ServerData.cardsData.forEach((cardElement) => {
+		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == ServerData.userData._id);
+		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);
+		createCard(cardObj);
+	})
+})

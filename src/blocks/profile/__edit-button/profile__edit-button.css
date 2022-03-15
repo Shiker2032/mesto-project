@@ -15,7 +15,7 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    margin: 0px 19px 7px 7px;
+    margin: 0 0px 5px 10px;
     align-self: flex-end;    
   }
 }

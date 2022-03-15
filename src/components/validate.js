@@ -1,4 +1,4 @@
-export const validationconfig = {
+const validationConfig = {
 	formSelector: '.form',
 	inputSelector: '.form__input',
 	buttonSelector: '.form__button',
@@ -68,7 +68,7 @@ function setEventListeners (formElement, config) {
 }
 
 export function enableValidation (config) {
-	const formElements = Array.from(document.querySelectorAll(validationconfig.formSelector));
+	const formElements = Array.from(document.querySelectorAll(validationConfig.formSelector));
 	formElements.forEach((formElement) => {
 		formElement.addEventListener('submit', (evt) => {
 			evt.preventDefault();			
@@ -76,3 +76,5 @@ export function enableValidation (config) {
 		setEventListeners(formElement, config);
 	});
 };
+
+export {validationConfig, disableButton}

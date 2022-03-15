@@ -3,7 +3,7 @@ import { changeAvatarAPI} from "./api.js";
 
 const profileCloseButton = document.querySelector("[id='profile-form-close']");
 const popupProfile = document.querySelector("#popup-profile-edit");
-const editbutton = document.querySelector(".profile__edit-button");
+const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector("[id='popup-card']");
 const cardCloseButton = document.querySelector("[id='card-form-close']");
@@ -11,41 +11,29 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const imageContainerCloseBtn = document.querySelector("#popup-image__close-button");
 const editAvatarForm = document.forms.profile_avatar_edit_form;
 const popupAvatarEdit = document.querySelector('#popup-avatar-edit');
-const editAvatarIElement = document.querySelector(".profile__avatar");
+const editAvatarElement = document.querySelector(".profile__avatar");
 const closeAvatarForm = document.querySelector('#avatar-form-close');
-const editAvatarIBtn = document.querySelector('.profile__edit-avatar-button');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
-
-editAvatarForm.addEventListener('submit', (evt) => {
-	const popup = findActivePopup();
-
-	evt.preventDefault();	
-	changeAvatarAPI (editAvatarUrl.value);
-	editAvatarIElement.src = editAvatarUrl.value;		
-	editAvatarForm.reset();
-	togglePopup(popup);	
-})
-
-editAvatarIElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
-
-editAvatarIElement.addEventListener('mouseenter', () => {
-	editAvatarIBtn.classList.add('profile__edit-avatar-button_visible');	
-	editAvatarIElement.style.opacity = "0.5";
-})
-editAvatarIElement.addEventListener('mouseleave', () => {
-	editAvatarIBtn.classList.remove('profile__edit-avatar-button_visible');	
-	editAvatarIElement.style.opacity = "1";	
-})
+const submitAvatarBtn = editAvatarForm.querySelector('#submit-avatar-btn');
 
 function togglePopup(popup) {
 	if (popup.classList.contains('popup_state_visible')){
-		document.removeEventListener('keydown', closeByEsc);
-		popup.removeEventListener('click', closeByClick);
+		closePopup (popup);		
 	} else {
-		document.addEventListener('keydown', closeByEsc);
-		popup.addEventListener('click', closeByClick);
+		openPopup (popup);		
 	}
-	popup.classList.toggle("popup_state_visible"); 	
+}
+
+function openPopup (popup) {
+	document.addEventListener('keydown', closeByEsc);
+	popup.addEventListener('click', closeByClick);
+	popup.classList.add('popup_state_visible');
+}
+
+function closePopup (popup) {
+	document.removeEventListener('keydown', closeByEsc);
+	popup.removeEventListener('click', closeByClick);
+	popup.classList.remove('popup_state_visible');
 }
 
 function findActivePopup () {
@@ -60,12 +48,11 @@ function closeByEsc (evt) {
 }
 
 function closeByClick (evt) {
-	const popup = findActivePopup();
-	if (evt.target.classList.contains('popup')) togglePopup(popup);
+	if (evt.target.classList.contains('popup')) togglePopup(evt.target);
 }
 
 function setPopupEventListeners () {
-	editbutton.addEventListener("click", () => togglePopup(popupProfile));
+	editButton.addEventListener("click", () => togglePopup(popupProfile));
 	profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
 	addButton.addEventListener("click", () => togglePopup(popupCard));
 	cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
@@ -73,4 +60,18 @@ function setPopupEventListeners () {
 	closeAvatarForm.addEventListener("click", () => togglePopup(popupAvatarEdit));
 }
 
-export {setPopupEventListeners, togglePopup, findActivePopup}
+editAvatarElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
+
+editAvatarForm.addEventListener('submit', (evt) => {
+	evt.preventDefault();
+
+	changeAvatarAPI(editAvatarUrl.value).then(() => {
+		editAvatarElement.src = editAvatarUrl.value
+		editAvatarForm.reset();
+		submitAvatarBtn.disabled = true;
+		submitAvatarBtn.classList.add('form__button_disabled');
+		togglePopup(popupAvatarEdit);
+	})			
+})
+
+export {setPopupEventListeners, togglePopup, findActivePopup, popupCard}
