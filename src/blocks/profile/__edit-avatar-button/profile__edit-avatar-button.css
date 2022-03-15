@@ -1,4 +1,5 @@
 .profile__edit-avatar-button {
+  z-index: 1;
   position: absolute;  
   left: 50px;
   opacity: 0;

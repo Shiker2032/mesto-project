@@ -12,7 +12,6 @@ const editAvatarForm = document.forms.profile_avatar_edit_form;
 const popupAvatarEdit = document.querySelector('#popup-avatar-edit');
 const editAvatarElement = document.querySelector(".profile__avatar");
 const closeAvatarForm = document.querySelector('#avatar-form-close');
-const editAvatarBtn = document.querySelector('.profile__edit-avatar-button');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 
 editAvatarForm.addEventListener('submit', (evt) => {
@@ -25,15 +24,6 @@ editAvatarForm.addEventListener('submit', (evt) => {
 })
 
 editAvatarElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
-
-editAvatarElement.addEventListener('mouseenter', () => {
-	editAvatarBtn.classList.add('profile__edit-avatar-button_visible');	
-	editAvatarElement.style.opacity = "0.5";
-})
-editAvatarElement.addEventListener('mouseleave', () => {
-	editAvatarBtn.classList.remove('profile__edit-avatar-button_visible');	
-	editAvatarElement.style.opacity = "1";	
-})
 
 function togglePopup(popup) {
 	if (popup.classList.contains('popup_state_visible')){

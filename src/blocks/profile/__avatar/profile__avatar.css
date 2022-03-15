@@ -1,4 +1,5 @@
 .profile__avatar {
+  z-index: 2;
   max-width: 120px;
   width: 100%;
   border-radius: 50px;
@@ -8,5 +9,6 @@
 
 .profile__avatar:hover {
  cursor: pointer;
-
+ z-index: 1;
+ opacity: 0.5;
 }
