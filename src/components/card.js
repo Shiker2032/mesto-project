@@ -53,13 +53,13 @@ function addCardFunctions(photoCardElement) {
 		if (!photoCardElement.isLiked) {			
 			putLikeAPI(photoCardElement.id).then((res) => {							
 					likeCounterElement.textContent = res.likes.length;
-					likeButton.classList.toggle("like-button_state_liked");
+					likeButton.classList.add("like-button_state_liked");
 					photoCardElement.isLiked = true;				
 			})
 		} else {
 			deleteLikeAPI(photoCardElement.id).then((res) => {
 				likeCounterElement.textContent = res.likes.length
-				likeButton.classList.toggle("like-button_state_liked");					
+				likeButton.classList.remove("like-button_state_liked");					
 				photoCardElement.isLiked = false;						
 			})
 		}		
