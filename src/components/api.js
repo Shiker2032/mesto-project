@@ -4,6 +4,7 @@ const config = {
   urlLikes :'https://nomoreparties.co/v1/plus-cohort7/cards/likes',
   token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
 }
+
 function getUserDataAPI () {
   return fetch (config.urlProfile, {
     headers: {
