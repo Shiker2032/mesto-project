@@ -37,7 +37,7 @@ function setProfileData() {
 	newActivity.value = oldActivity.textContent;    
 }
 
-function DrawProfile (profileObj) {
+function updateProfile (profileObj) {
 	oldName.textContent = profileObj.name;
 	oldActivity.textContent = profileObj.about;
 	profileAvatar.src = profileObj.avatar;
@@ -64,7 +64,7 @@ function submitProfile(event) {
 	event.preventDefault();
 	updateProfileAPI(newName.value, newActivity.value)
 	.then(profileData => {
-		DrawProfile(profileData);
+		updateProfile(profileData);
 		togglePopup(popupProfile);
 	})
 }
@@ -89,7 +89,7 @@ Promise.all([
 	return data
 })
 .then((ServerData) => {
-	DrawProfile(ServerData.userData);
+	updateProfile(ServerData.userData);
 	ServerData.cardsData.forEach((cardElement) => {
 		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == ServerData.userData._id);
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);
