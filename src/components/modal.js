@@ -16,14 +16,6 @@ const closeAvatarForm = document.querySelector('#avatar-form-close');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 const submitAvatarBtn = editAvatarForm.querySelector('#submit-avatar-btn');
 
-// function togglePopup(popup) {
-// 	if (popup.classList.contains('popup_state_visible')){
-// 		closePopup (popup);		
-// 	} else {
-// 		openPopup (popup);		
-// 	}
-// }
-
 function openPopup (popup) {
 	document.addEventListener('keydown', closeByEsc);
 	popup.addEventListener('click', closeByClick);
@@ -63,15 +55,19 @@ function setPopupEventListeners () {
 editAvatarElement.addEventListener('click', () => openPopup(popupAvatarEdit));
 
 editAvatarForm.addEventListener('submit', (evt) => {
-	evt.preventDefault();
-
+	evt.preventDefault();	
 	changeAvatarAPI(editAvatarUrl.value).then(() => {
+		submitAvatarBtn.textContent = '...';
 		editAvatarElement.src = editAvatarUrl.value
 		editAvatarForm.reset();
 		submitAvatarBtn.disabled = true;
-		submitAvatarBtn.classList.add('form__button_disabled');
-		closePopup(popupAvatarEdit);
+		submitAvatarBtn.classList.add('form__button_disabled');		
 	})			
+	.catch((error) => console.log(error))
+	.finally(() => {
+		submitAvatarBtn.textContent = 'Сохранить'
+		closePopup(popupAvatarEdit);		
+	})
 })
 
 export {setPopupEventListeners, findActivePopup, popupCard, openPopup, closePopup}

@@ -13,8 +13,7 @@ function getUserDataAPI () {
   .then (res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .catch((error) => console.log(error))
+  })  
 }
 
 function updateProfileAPI (nameInput, aboutInput) {
@@ -32,8 +31,7 @@ function updateProfileAPI (nameInput, aboutInput) {
   .then(res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .catch((error) => console.log(error))
+  })  
 }
 
 function loadCardsAPI () {
@@ -47,7 +45,6 @@ function loadCardsAPI () {
    if (res.ok) return res.json();
    return Promise.reject(`Reject: ${res.status}`);
  }) 
- .catch((error) => console.log(error))
 }
 
 function createCardAPI (cardName, cardUrl) {
@@ -65,8 +62,7 @@ function createCardAPI (cardName, cardUrl) {
  .then(res => {
    if (res.ok) return res.json();
    return Promise.reject(`Reject: ${res.status}`);
- })
- .catch((error) => console.log(error))
+ }) 
 }
 
 function deleteCardAPI (card_id) { 
@@ -79,8 +75,7 @@ function deleteCardAPI (card_id) {
   .then (res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .catch((error) => console.log(error))
+  })  
 }
 
 function putLikeAPI (card_id) {
@@ -93,8 +88,7 @@ function putLikeAPI (card_id) {
   .then(res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })  
-  .catch((error) => console.log(error))
+  })    
 }
 
 function deleteLikeAPI (card_id) {
@@ -107,8 +101,7 @@ function deleteLikeAPI (card_id) {
   .then(res => {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })  
-  .catch((error) => console.log(error))
+  })   
 }
 
 function changeAvatarAPI (image_url) {
@@ -125,8 +118,7 @@ function changeAvatarAPI (image_url) {
   .then(res=> {
     if (res.ok) return res.json();
     return Promise.reject(`Reject: ${res.status}`);
-  })
-  .catch((error) => console.log(error))
+  })  
 }
 
 export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, getUserDataAPI}

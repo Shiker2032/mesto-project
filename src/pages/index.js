@@ -8,10 +8,11 @@ import {createCard} from '../../src/components/card.js';
 
 const addCardForm = document.forms.card_edit_form;
 const profileForm = document.forms.profile_edit_form;
+const popupProfile = document.querySelector("#popup-profile-edit");
+const profileSubmitBtn = profileForm.querySelector('#submit-profile-button')
 const profile = document.querySelector(".profile");
 const profileAvatar = document.querySelector('.profile__avatar');
 const editbutton = document.querySelector(".profile__edit-button");
-const popupProfile = document.querySelector("#popup-profile-edit");
 const nameInput = addCardForm.querySelector("#card-name-input");
 const urlInput = addCardForm.querySelector("#card-url-input");
 const submitCardBtn = addCardForm.querySelector("#submit-card-btn");
@@ -50,21 +51,30 @@ function submitCard(event) {
 
 	createCardAPI(cardName, cardUrl)
 	.then(cardElement => {
+		submitCardBtn.textContent = '...';
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true, false);
-		createCard(cardObj);
-
-		closePopup(popupCard);
+		createCard(cardObj);		
 		addCardForm.reset();
 		submitCardBtn.classList.add("form__button_disabled");
 		submitCardBtn.disabled = true;
 	})
+	.catch((error) => console.log(error))
+	.finally(() => {
+		submitCardBtn.textContent = 'Создать';
+		closePopup(popupCard);
+	})	
 }
 
 function submitProfile(event) {
 	event.preventDefault();
+
 	updateProfileAPI(newName.value, newActivity.value)
 	.then(profileData => {
-		updateProfile(profileData);
+		profileSubmitBtn.textContent = '...';
+		updateProfile(profileData);	
+	})
+	.finally(() => {
+		profileSubmitBtn.textContent = 'Cохранить';
 		closePopup(popupProfile);
 	})
 }
@@ -94,5 +104,6 @@ Promise.all([
 		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == ServerData.userData._id);
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);
 		createCard(cardObj);
-	})
+	})	
 })
+.catch((error) => console.log(error))
