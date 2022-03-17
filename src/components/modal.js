@@ -57,7 +57,7 @@ editAvatarElement.addEventListener('click', () => openPopup(popupAvatarEdit));
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();	
 	changeAvatarAPI(editAvatarUrl.value).then(() => {
-		submitAvatarBtn.textContent = '...';
+		submitAvatarBtn.textContent = 'Сохранить...';
 		editAvatarElement.src = editAvatarUrl.value
 		editAvatarForm.reset();
 		submitAvatarBtn.disabled = true;
@@ -66,7 +66,7 @@ editAvatarForm.addEventListener('submit', (evt) => {
 	.catch((error) => console.log(error))
 	.finally(() => {
 		submitAvatarBtn.textContent = 'Сохранить'
-		closePopup(popupAvatarEdit);		
+			
 	})
 })
 

@@ -51,7 +51,7 @@ function submitCard(event) {
 
 	createCardAPI(cardName, cardUrl)
 	.then(cardElement => {
-		submitCardBtn.textContent = '...';
+		submitCardBtn.textContent = 'Создать...';
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true, false);
 		createCard(cardObj);		
 		addCardForm.reset();
@@ -70,7 +70,7 @@ function submitProfile(event) {
 
 	updateProfileAPI(newName.value, newActivity.value)
 	.then(profileData => {
-		profileSubmitBtn.textContent = '...';
+		profileSubmitBtn.textContent = 'Сохранить...';
 		updateProfile(profileData);	
 	})
 	.finally(() => {
