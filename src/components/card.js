@@ -1,13 +1,17 @@
 import {togglePopup} from "../components/modal.js"
-import {deleteCardAPI, putLikeAPI, deleteLikeAPI, getUserDataAPI} from "./api.js"; 
+import {deleteCardAPI, putLikeAPI, deleteLikeAPI, getUserDataAPI, getUserDataAPINew} from "./api.js"; 
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
 const photoCardsContainer = document.querySelector(".photo-cards");
 const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
+const userData = {};
 
-
+	getUserDataAPI().then(res=> {
+		userData.id = res._id;
+	});
+	
 function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
 	const likeButton = photoCardEl.querySelector(".photo-card__like-button");
@@ -26,8 +30,7 @@ function createCard(cardObj) {
 	
 	if (cardObj.isLiked) likeButton.classList.toggle("like-button_state_liked");
 	addCardFunctions(photoCardEl);
-	getUserDataAPI().then((res) => {
-		if (photoCardEl.owner !=res._id) {
+		if (photoCardEl.owner != userData.id) {
 			photoCardEl.querySelector('.photo-card__delete-button').remove();
 		}
 		if (cardObj.isNew) {
@@ -35,7 +38,7 @@ function createCard(cardObj) {
 		} else {
 			photoCardsContainer.append(photoCardEl);
 		}
-	})
+	
 }
 
 function addCardFunctions(photoCardElement) {
@@ -51,7 +54,8 @@ function addCardFunctions(photoCardElement) {
 		const likeCounterElement = photoCardElement.querySelector('.photo-card__like-counter');
 
 		if (!photoCardElement.isLiked) {			
-			putLikeAPI(photoCardElement.id).then((res) => {							
+			putLikeAPI(photoCardElement.id).then((res) => {			
+					console.log(userData);				
 					likeCounterElement.textContent = res.likes.length;
 					likeButton.classList.add("like-button_state_liked");
 					photoCardElement.isLiked = true;				
