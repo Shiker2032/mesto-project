@@ -1,7 +1,7 @@
 import "../pages/index.css";
 import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
-import { togglePopup, popupCard } from '../../src/components/modal';
+import {closePopup, popupCard } from '../../src/components/modal';
 import {enableValidation, validationConfig} from '../../src/components/validate.js'
 import { createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI } from "../components/api.js";
 import {createCard} from '../../src/components/card.js';
@@ -53,7 +53,7 @@ function submitCard(event) {
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true, false);
 		createCard(cardObj);
 
-		togglePopup(popupCard);
+		closePopup(popupCard);
 		addCardForm.reset();
 		submitCardBtn.classList.add("form__button_disabled");
 		submitCardBtn.disabled = true;
@@ -65,7 +65,7 @@ function submitProfile(event) {
 	updateProfileAPI(newName.value, newActivity.value)
 	.then(profileData => {
 		updateProfile(profileData);
-		togglePopup(popupProfile);
+		closePopup(popupProfile);
 	})
 }
 

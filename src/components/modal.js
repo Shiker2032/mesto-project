@@ -16,13 +16,13 @@ const closeAvatarForm = document.querySelector('#avatar-form-close');
 const editAvatarUrl = editAvatarForm.querySelector('#avatar-url-input');
 const submitAvatarBtn = editAvatarForm.querySelector('#submit-avatar-btn');
 
-function togglePopup(popup) {
-	if (popup.classList.contains('popup_state_visible')){
-		closePopup (popup);		
-	} else {
-		openPopup (popup);		
-	}
-}
+// function togglePopup(popup) {
+// 	if (popup.classList.contains('popup_state_visible')){
+// 		closePopup (popup);		
+// 	} else {
+// 		openPopup (popup);		
+// 	}
+// }
 
 function openPopup (popup) {
 	document.addEventListener('keydown', closeByEsc);
@@ -43,24 +43,24 @@ function findActivePopup () {
 function closeByEsc (evt) {
 	const popup = findActivePopup(); 
 	if ((evt.key === "Escape") && (popup != null)) { 
-			togglePopup(popup);		
+			closePopup(popup);		
 	}
 }
 
 function closeByClick (evt) {
-	if (evt.target.classList.contains('popup')) togglePopup(evt.target);
+	if (evt.target.classList.contains('popup')) closePopup(evt.target);
 }
 
 function setPopupEventListeners () {
-	editButton.addEventListener("click", () => togglePopup(popupProfile));
-	profileCloseButton.addEventListener("click", () => togglePopup(popupProfile));
-	addButton.addEventListener("click", () => togglePopup(popupCard));
-	cardCloseButton.addEventListener("click", () => togglePopup(popupCard));
-	imageContainerCloseBtn.addEventListener("click", () => togglePopup(popupImageContainer));
-	closeAvatarForm.addEventListener("click", () => togglePopup(popupAvatarEdit));
+	editButton.addEventListener("click", () => openPopup(popupProfile));
+	profileCloseButton.addEventListener("click", () => closePopup(popupProfile));
+	addButton.addEventListener("click", () => openPopup(popupCard));
+	cardCloseButton.addEventListener("click", () => closePopup(popupCard));
+	imageContainerCloseBtn.addEventListener("click", () => closePopup(popupImageContainer));
+	closeAvatarForm.addEventListener("click", () => closePopup(popupAvatarEdit));
 }
 
-editAvatarElement.addEventListener('click', () => togglePopup(popupAvatarEdit));
+editAvatarElement.addEventListener('click', () => openPopup(popupAvatarEdit));
 
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();
@@ -70,8 +70,8 @@ editAvatarForm.addEventListener('submit', (evt) => {
 		editAvatarForm.reset();
 		submitAvatarBtn.disabled = true;
 		submitAvatarBtn.classList.add('form__button_disabled');
-		togglePopup(popupAvatarEdit);
+		closePopup(popupAvatarEdit);
 	})			
 })
 
-export {setPopupEventListeners, togglePopup, findActivePopup, popupCard}
+export {setPopupEventListeners, findActivePopup, popupCard, openPopup, closePopup}

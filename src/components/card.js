@@ -1,4 +1,4 @@
-import {togglePopup} from "../components/modal.js"
+import {openPopup} from "../components/modal.js"
 import {deleteCardAPI, putLikeAPI, deleteLikeAPI, getUserDataAPI, getUserDataAPINew} from "./api.js"; 
 
 const photoCardElement = document.querySelector("#photo-card-template").content.querySelector(".photo-card");
@@ -11,7 +11,7 @@ const userData = {};
 	getUserDataAPI().then(res=> {
 		userData.id = res._id;
 	});
-	
+
 function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
 	const likeButton = photoCardEl.querySelector(".photo-card__like-button");
@@ -74,7 +74,7 @@ function addCardFunctions(photoCardElement) {
 		popupImage.src = card.src;
 		popupImageTitle.textContent = card.alt;
 		popupImage.alt = card.alt;
-		togglePopup(popupImageContainer);
+		openPopup(popupImageContainer);
 	});
 	
 }
