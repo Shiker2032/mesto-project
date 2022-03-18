@@ -4,7 +4,7 @@ import {setPopupEventListeners} from "../../src/components/modal"
 import {closePopup, popupCard } from '../../src/components/modal';
 import {enableValidation, validationConfig} from '../../src/components/validate.js'
 import { createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI } from "../components/api.js";
-import {createCard} from '../../src/components/card.js';
+import {createCard, storedUserData} from '../../src/components/card.js';
 
 const addCardForm = document.forms.card_edit_form;
 const profileForm = document.forms.profile_edit_form;
@@ -49,33 +49,33 @@ function submitCard(event) {
 	const cardUrl = urlInput.value;
 	const cardName = nameInput.value;
 
+	submitCardBtn.textContent = 'Создать...';
 	createCardAPI(cardName, cardUrl)
 	.then(cardElement => {
-		submitCardBtn.textContent = 'Создать...';
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, true, false);
 		createCard(cardObj);		
 		addCardForm.reset();
 		submitCardBtn.classList.add("form__button_disabled");
 		submitCardBtn.disabled = true;
+		closePopup(popupCard);
 	})
 	.catch((error) => console.log(error))
 	.finally(() => {
 		submitCardBtn.textContent = 'Создать';
-		closePopup(popupCard);
 	})	
 }
 
 function submitProfile(event) {
 	event.preventDefault();
-
+	profileSubmitBtn.textContent = 'Сохранить...';
 	updateProfileAPI(newName.value, newActivity.value)
 	.then(profileData => {
-		profileSubmitBtn.textContent = 'Сохранить...';
 		updateProfile(profileData);	
-	})
-	.finally(() => {
-		profileSubmitBtn.textContent = 'Cохранить';
 		closePopup(popupProfile);
+	})
+	.catch((error) => console.log(error))
+	.finally(() => {
+		profileSubmitBtn.textContent = 'Cохранить';		
 	})
 }
 
@@ -89,7 +89,7 @@ enableValidation(validationConfig);
 
 Promise.all([
 	getUserDataAPI(),
-	loadCardsAPI()
+	loadCardsAPI()	
 ])
 .then((values) => {
 	const data = {
@@ -98,12 +98,13 @@ Promise.all([
 	}
 	return data
 })
-.then((ServerData) => {
-	updateProfile(ServerData.userData);
-	ServerData.cardsData.forEach((cardElement) => {
-		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == ServerData.userData._id);
+.then((serverData) => {
+	updateProfile(serverData.userData);
+	storedUserData.id = serverData.userData._id;
+	serverData.cardsData.forEach((cardElement) => {
+		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == serverData.userData._id);
 		const cardObj = new CardClass (cardElement.name, cardElement.link, cardElement._id, cardElement.owner._id, cardElement.likes, false, isLiked);
-		createCard(cardObj);
+		createCard(cardObj);		
 	})	
 })
 .catch((error) => console.log(error))

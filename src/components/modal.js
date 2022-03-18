@@ -56,17 +56,17 @@ editAvatarElement.addEventListener('click', () => openPopup(popupAvatarEdit));
 
 editAvatarForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();	
+	submitAvatarBtn.textContent = 'Сохранить...';
 	changeAvatarAPI(editAvatarUrl.value).then(() => {
-		submitAvatarBtn.textContent = 'Сохранить...';
 		editAvatarElement.src = editAvatarUrl.value
 		editAvatarForm.reset();
 		submitAvatarBtn.disabled = true;
 		submitAvatarBtn.classList.add('form__button_disabled');		
+		closePopup(popupAvatarEdit);
 	})			
 	.catch((error) => console.log(error))
 	.finally(() => {
-		submitAvatarBtn.textContent = 'Сохранить'
-			
+		submitAvatarBtn.textContent = 'Сохранить'			
 	})
 })
 
