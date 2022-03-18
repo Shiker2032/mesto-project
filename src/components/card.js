@@ -8,8 +8,6 @@ const popupImageTitle = popupImageContainer.querySelector(".popup-image__title")
 const popupImage = document.querySelector(".popup-image__image");
 const storedUserData = {};
 
-
-
 function createCard(cardObj) {
 	const photoCardEl = photoCardElement.cloneNode(true);
 	const likeButton = photoCardEl.querySelector(".photo-card__like-button");
