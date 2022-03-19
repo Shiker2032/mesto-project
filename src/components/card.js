@@ -41,6 +41,7 @@ function addCardFunctions(photoCardElement) {
 	const cardImage = photoCardElement.querySelector(".photo-card__image");
 	deleteButton.addEventListener("click", function () {
 		deleteCardAPI(photoCardElement.id).then(() => photoCardElement.remove())
+		.catch((error) => console.log(error));
 	});
 	
 	likeButton.addEventListener("click",  (evt) => {
@@ -51,12 +52,14 @@ function addCardFunctions(photoCardElement) {
 				likeButton.classList.add("like-button_state_liked");
 				photoCardElement.isLiked = true;
 			})
+			.catch((error) => console.log(error));
 		} else {
 			deleteLikeAPI(photoCardElement.id).then((res) => {
 				likeCounterElement.textContent = res.likes.length
 				likeButton.classList.remove("like-button_state_liked");
 				photoCardElement.isLiked = false;
 			})
+			.catch((error) => console.log(error))
 		}
 	})
 	

@@ -98,6 +98,7 @@ Promise.all([
 	}
 	return data
 })
+.catch((error) => console.log(error))
 .then((serverData) => {
 	updateProfile(serverData.userData);
 	storedUserData.id = serverData.userData._id;
