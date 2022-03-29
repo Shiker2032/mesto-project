@@ -39,7 +39,7 @@ function submitCard(event) {
 
 	submitCardBtn.textContent = 'Создать...';
 	createCardAPI(cardName, cardUrl)
-	.then(cardElement => {
+	.then(cardElement => {		
 		const cardObj = new CardClass (cardElement, true, false);
 		cardObj._generate();		
 		addCardForm.reset();
@@ -90,7 +90,7 @@ Promise.all([
 .then((serverData) => {
 	updateProfile(serverData.userData);
 	storedUserData.id = serverData.userData._id;
-	serverData.cardsData.forEach((cardElement) => {
+	serverData.cardsData.forEach((cardElement) => {	
 		const isLiked = cardElement.likes.some((likeEl) => likeEl._id == serverData.userData._id);
 		const cardObj = new CardClass (cardElement, false, isLiked);
 		cardObj._generate();		

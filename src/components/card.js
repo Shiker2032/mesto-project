@@ -6,13 +6,14 @@ const popupImageContainer = document.querySelector("#popup-image-container");
 const popupImageTitle = popupImageContainer.querySelector(".popup-image__title");
 const popupImage = document.querySelector(".popup-image__image");
 const storedUserData = {};
+const mockUserId = 'a9989f08a11db0ae0dffbcf2';
 
 class CardClass {
 	constructor (data, isNew, isLiked) {
 		this.name = data.name,
 		this.link = data.link,
-		this._id = data._id,
-		this.owner_id = data.owner_id,
+		this._id = data._id,	
+		this.owner_id = data.owner._id,
 		this.likes = data.likes,
 		this.isNew = isNew,
 		this.isLiked = isLiked;
@@ -33,8 +34,7 @@ class CardClass {
 		const likeButtonEl = photoCardEl.querySelector(".photo-card__like-button");		
 		const imageElement = photoCardEl.querySelector(".photo-card__image");
 		const imageTitleElement = photoCardEl.querySelector(".photo-card__title");
-		const likeCounterElement = photoCardEl.querySelector('.photo-card__like-counter');
-
+		const likeCounterElement = photoCardEl.querySelector('.photo-card__like-counter');		
 		imageTitleElement.textContent = this.name;
 		imageElement.alt = this.name;
 		imageElement.src = this.link;
@@ -44,8 +44,9 @@ class CardClass {
 		photoCardEl.isLiked = this.isLiked;
 
 		if (this.isLiked) likeButtonEl.classList.toggle("like-button_state_liked");
-		addCardFunctions(photoCardEl);	
-		if (photoCardEl.owner != storedUserData.id) {
+		addCardFunctions(photoCardEl);
+
+		if (this.owner_id != mockUserId) {
 			photoCardEl.querySelector('.photo-card__delete-button').remove();
 		}
 		if (this.isNew) {
@@ -59,6 +60,11 @@ class CardClass {
 			popupImageTitle.textContent = this.name;
 			popupImage.alt = this.name;	
 			openPopup(popupImageContainer);
+	}
+	_handleDeleteCard () {
+		console.log(this._id);
+		deleteCardAPI(this._id).then(() => this._element.remove())
+		.catch((error) => console.log(error));	
 	}
 	_handleLike () {		
 			const likeCounterElement = this._element.querySelector('.photo-card__like-counter');
@@ -87,15 +93,16 @@ class CardClass {
 		this._element.querySelector('.photo-card__like-button').addEventListener("click", () => {
 			this._handleLike();
 		})
+		this._element.querySelector('.photo-card__delete-button').addEventListener('click', () => {
+			this._handleDeleteCard();
+		})
 	}
 }
 
 function addCardFunctions(photoCardElement) {	
-	const deleteButton = photoCardElement.querySelector(".photo-card__delete-button");	
-	deleteButton.addEventListener("click", function () {
-		deleteCardAPI(photoCardElement.id).then(() => photoCardElement.remove())
-		.catch((error) => console.log(error));
-	});	
+	
+	
+		
 }
 
 export {CardClass, photoCardsContainer, storedUserData};
