@@ -2,7 +2,26 @@ const config = {
   urlCards: 'https://nomoreparties.co/v1/plus-cohort7/cards',
   urlProfile: 'https://nomoreparties.co/v1/plus-cohort7/users/me',
   urlLikes :'https://nomoreparties.co/v1/plus-cohort7/cards/likes',
-  token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259'
+  token: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259',
+  headers: {
+    authorization: 'd5427cfe-b46d-4e99-8eaf-124e3b1bb259',
+    'Content-type': 'application/JSON'   
+  }
+}
+
+class API  {
+  constructor () {};
+  _mockFetch () { 
+    return fetch (config.urlProfile, {headers: config.headers})
+  } 
+}
+
+function parseResponse (res) {
+  if (res.ok) {
+    return res.json()
+  } else {
+    return Promise.reject(new Error(`Произошла ошибка со статус - кодом ${res.status}`));
+  }
 }
 
 function getUserDataAPI () {
@@ -11,10 +30,7 @@ function getUserDataAPI () {
       authorization: config.token
     }
   })
-  .then (res => {
-    if (res.ok) return res.json();
-    return Promise.reject(`Reject: ${res.status}`);
-  })  
+  .then (res => parseResponse (res));
 }
 
 function updateProfileAPI (nameInput, aboutInput) {
@@ -29,10 +45,7 @@ function updateProfileAPI (nameInput, aboutInput) {
       about: aboutInput
     })
   })
-  .then(res => {
-    if (res.ok) return res.json();
-    return Promise.reject(`Reject: ${res.status}`);
-  })  
+  .then (res => parseResponse (res)); 
 }
 
 function loadCardsAPI () {
@@ -42,10 +55,7 @@ function loadCardsAPI () {
      'content-type': 'application/JSON'
    }
  })
- .then (res => {
-   if (res.ok) return res.json();
-   return Promise.reject(`Reject: ${res.status}`);
- }) 
+ .then (res => parseResponse (res));
 }
 
 function createCardAPI (cardName, cardUrl) {
@@ -60,10 +70,7 @@ function createCardAPI (cardName, cardUrl) {
      link: cardUrl,    
    })
  })
- .then(res => {
-   if (res.ok) return res.json();
-   return Promise.reject(`Reject: ${res.status}`);
- }) 
+ .then (res => parseResponse (res));
 }
 
 function deleteCardAPI (card_id) { 
@@ -73,10 +80,7 @@ function deleteCardAPI (card_id) {
       authorization: config.token
     },    
   })
-  .then (res => {
-    if (res.ok) return res.json();
-    return Promise.reject(`Reject: ${res.status}`);
-  })  
+  .then (res => parseResponse (res)); 
 }
 
 function putLikeAPI (card_id) {
@@ -86,10 +90,7 @@ function putLikeAPI (card_id) {
       authorization: config.token
     },    
   })
-  .then(res => {
-    if (res.ok) return res.json();
-    return Promise.reject(`Reject: ${res.status}`);
-  })    
+  .then (res => parseResponse (res));   
 }
 
 function deleteLikeAPI (card_id) {
@@ -99,10 +100,7 @@ function deleteLikeAPI (card_id) {
       authorization: config.token
     },    
   })
-  .then(res => {
-    if (res.ok) return res.json();
-    return Promise.reject(`Reject: ${res.status}`);
-  })   
+  .then (res => parseResponse (res));  
 }
 
 function changeAvatarAPI (image_url) {
@@ -116,10 +114,7 @@ function changeAvatarAPI (image_url) {
       avatar: `${image_url}`
     })
   })
-  .then(res=> {
-    if (res.ok) return res.json();
-    return Promise.reject(`Reject: ${res.status}`);
-  })  
+  .then (res => parseResponse (res));
 }
 
-export {createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, getUserDataAPI}
+export {API, createCardAPI, deleteCardAPI, loadCardsAPI, updateProfileAPI, putLikeAPI, changeAvatarAPI, deleteLikeAPI, getUserDataAPI}

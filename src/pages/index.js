@@ -3,7 +3,7 @@ import "../components/api.js"
 import {setPopupEventListeners} from "../../src/components/modal"
 import {closePopup, popupCard } from '../../src/components/modal';
 import {enableValidation, validationConfig} from '../../src/components/validate.js'
-import { createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI } from "../components/api.js";
+import { API, createCardAPI, updateProfileAPI, getUserDataAPI, loadCardsAPI} from "../components/api.js";
 import {CardClass, createCard, storedUserData} from '../../src/components/card.js';
 
 const addCardForm = document.forms.card_edit_form;
@@ -97,3 +97,9 @@ Promise.all([
 	})	
 })
 .catch((error) => console.log(error))
+
+const api = new API ();
+
+api._mockFetch()
+.then(res => res.json())
+.then(json => console.log(json));
