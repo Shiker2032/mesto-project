@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Shiker2032/mesto-project/issues"
   },
-  "homepage": "https://github.com/Shiker2032/mesto-project#readme",
+  "homepage": "https://shiker2032.github.io/mesto-project/",
   "dependencies": {
     "core-js": "^3.21.1"
   },
