@@ -1,22 +1,15 @@
 {
   "name": "mesto-project",
   "version": "1.0.0",
+  "homepage": "https://shiker2032.github.io/mesto-project/",
   "description": "Проект для яндекс практикума, задачей которого является переход со статической верстки к адаптивной, с использованием сеток.<br>\r UPD: Новая задача проекта: добавление интерактивных элементов с помощью JS\r ### Технологии проекта:\r * HTML\r * CSS\r * JS\r * В проекте не используются сторонние расширения кроме шрифтов и normalize",
   "main": "script.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shiker2032/mesto-project.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Shiker2032/mesto-project/issues"
-  },
-  "homepage": "https://github.com/Shiker2032/mesto-project#readme",
   "dependencies": {
     "core-js": "^3.21.1"
   },
