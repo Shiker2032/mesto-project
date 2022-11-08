@@ -1,9 +1,0 @@
-.photo-card__like-button {
-  max-width: 22px; 
-  background-color: transparent;
-  background-size: cover;
-  border: none;
-  width: 22px;
-  height: 19px; 
-  background-image: url(../../../../src/images/like.svg);  
-}

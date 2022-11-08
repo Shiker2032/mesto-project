@@ -1,9 +1,0 @@
-.profile__wrapper-info {
-  margin-left: 30px;
-}
-
-@media (max-width: 1000px) {
-  .profile__wrapper-info {
-      margin-left: 0;
-  }
-}
