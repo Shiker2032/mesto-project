@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack server"
+    "dev": "webpack server",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/Shiker2032/mesto-project/issues"
   },
-  "homepage": "https://github.com/Shiker2032/mesto-project#readme",
+  "homepage": "https://shiker2032.github.io/react-burger/",
   "dependencies": {
     "core-js": "^3.21.1"
   },
@@ -28,6 +29,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.6.0",
     "cssnano": "^5.0.17",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
     "postcss-loader": "^6.2.1",
