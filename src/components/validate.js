@@ -16,7 +16,7 @@ const validationConfig = {
  function showInputError(inputElement, errorElement, errorMessage, config) {
 	inputElement.classList.add(config.inputInvalidClass);
 	errorElement.classList.add(config.visibleErrorClass);
-	if (inputElement.id === "card-url-input") errorElement.textContent = "Не ссылка";
+	if (inputElement.id === "card-url-input") errorElement.textContent = "Некорректная ссылка";
 	else errorElement.textContent = errorMessage;
  }
 

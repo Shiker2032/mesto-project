@@ -94,7 +94,7 @@ Promise.all([
 .then((values) => {
 	const data = {
 		userData : values[0],
-		cardsData : values[1]		
+		cardsData : values[1].slice(0,9)		
 	}
 	return data
 })
